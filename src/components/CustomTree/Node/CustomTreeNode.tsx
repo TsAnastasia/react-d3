@@ -7,20 +7,22 @@ import {
 import styles from "./customTreeNode.module.scss";
 
 interface I {
-  onAddChildren: (node: TreeNodeDatum) => void;
+  onAddChildren?: (node: TreeNodeDatum) => void;
+  onEditNode?: (node: TreeNodeDatum) => void;
 }
 
 const CustomTreeNode: FC<CustomNodeElementProps & I> = ({
   nodeDatum,
   onAddChildren,
+  onEditNode,
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [size, setSize] = useState({ w: 200, h: 100 });
+  const [size, setSize] = useState({ w: 150, h: 100 });
 
   useEffect(() => {
     setSize((state) => ({
       ...state,
-      h: ref.current ? ref.current.clientHeight + 2 : state.h,
+      h: ref.current ? ref.current.clientHeight : state.h,
     }));
   }, [ref]);
 
@@ -30,13 +32,34 @@ const CustomTreeNode: FC<CustomNodeElementProps & I> = ({
       height={size.h}
       transform={`translate(-${size.w / 2}, -${size.h / 2})`}
     >
-      <div ref={ref} className={styles.node}>
-        <p style={{ margin: 0 }}>{nodeDatum.name}</p>
-        <button type="button" onClick={() => onAddChildren(nodeDatum)}>
-          add
-        </button>
-        <button type="button">delete</button>
-        <button type="button">edit</button>
+      <div ref={ref} className={styles.root}>
+        <div className={`${styles.node} ${styles.node_blue}`}>
+          <p style={{ margin: 0 }}>{nodeDatum.name}</p>
+          {onAddChildren && (
+            <button
+              type="button"
+              className={`${styles.button} ${styles.buton_add}`}
+              onClick={() => onAddChildren(nodeDatum)}
+            >
+              a
+            </button>
+          )}
+          <button
+            type="button"
+            className={`${styles.button} ${styles.buton_delete}`}
+          >
+            d
+          </button>
+          {onEditNode && (
+            <button
+              type="button"
+              className={`${styles.button} ${styles.buton_edit}`}
+              onClick={() => onEditNode(nodeDatum)}
+            >
+              e
+            </button>
+          )}
+        </div>
       </div>
     </foreignObject>
   );

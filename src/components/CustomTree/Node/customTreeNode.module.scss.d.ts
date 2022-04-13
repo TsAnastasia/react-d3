@@ -1,6 +1,12 @@
 declare namespace CustomTreeNodeModuleScssNamespace {
   export interface ICustomTreeNodeModuleScss {
+    buton_add: string;
+    buton_delete: string;
+    buton_edit: string;
+    button: string;
     node: string;
+    node_blue: string;
+    root: string;
   }
 }
 

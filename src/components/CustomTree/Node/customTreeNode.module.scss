@@ -1,5 +1,76 @@
+.root {
+  padding: 15px;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
 .node {
+  min-height: 40px;
+  padding: 10px;
+  box-sizing: content-box;
+
+  border-radius: 10px;
+  border: 1px solid;
   background: #ccc;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.node_blue {
+  border-color: blue;
+  background-color: deepskyblue;
+}
+
+.button {
+  margin: 0;
+  padding: 4px;
+  min-width: 25px;
+  min-height: 25px;
   box-sizing: border-box;
-  border: 1px solid black;
+
+  outline: 0;
+  border: 0;
+  border-radius: 99em;
+
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.buton_add {
+  background-color: #3d484d;
+
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.buton_delete {
+  background-color: #eb9090;
+
+  top: 50%;
+  right: 0;
+
+  transform: translate(50%, -50%);
+}
+
+.buton_edit {
+  background-color: #00bcd4;
+
+  bottom: 0;
+  right: 0;
+  transform: translate(50%, 50%);
 }
