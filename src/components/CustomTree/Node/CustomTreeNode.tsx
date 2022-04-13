@@ -9,12 +9,14 @@ import styles from "./customTreeNode.module.scss";
 interface I {
   onAddChildren?: (node: TreeNodeDatum) => void;
   onEditNode?: (node: TreeNodeDatum) => void;
+  onDeleteNode?: (node: TreeNodeDatum) => void;
 }
 
 const CustomTreeNode: FC<CustomNodeElementProps & I> = ({
   nodeDatum,
   onAddChildren,
   onEditNode,
+  onDeleteNode,
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [size, setSize] = useState({ w: 150, h: 100 });
@@ -34,7 +36,7 @@ const CustomTreeNode: FC<CustomNodeElementProps & I> = ({
     >
       <div ref={ref} className={styles.root}>
         <div className={`${styles.node} ${styles.node_blue}`}>
-          <p style={{ margin: 0 }}>{nodeDatum.name}</p>
+          <p className={styles.name}>{nodeDatum.name}</p>
           {onAddChildren && (
             <button
               type="button"
@@ -44,12 +46,15 @@ const CustomTreeNode: FC<CustomNodeElementProps & I> = ({
               a
             </button>
           )}
-          <button
-            type="button"
-            className={`${styles.button} ${styles.buton_delete}`}
-          >
-            d
-          </button>
+          {onDeleteNode && (
+            <button
+              type="button"
+              className={`${styles.button} ${styles.buton_delete}`}
+              onClick={() => onDeleteNode(nodeDatum)}
+            >
+              d
+            </button>
+          )}
           {onEditNode && (
             <button
               type="button"

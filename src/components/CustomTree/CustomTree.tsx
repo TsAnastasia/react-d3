@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Tree from "react-d3-tree";
 import { RawNodeDatum, TreeNodeDatum } from "react-d3-tree/lib/types/common";
-import { addTreeChildrenNode } from "../../utils/tree";
+import { addTreeChildrenNode, deleteTreeNode } from "../../utils/tree";
 import CustomTreeNode from "./Node/CustomTreeNode";
 
 const translateData = {
@@ -23,6 +23,10 @@ const CustomTree: FC<{
     alert(`edit node ${node.name}`);
   };
 
+  const handleDeleteTreeNode = (node: TreeNodeDatum) => {
+    setTree((state) => deleteTreeNode(state, node));
+  };
+
   return (
     <Tree
       data={tree}
@@ -35,6 +39,7 @@ const CustomTree: FC<{
         <CustomTreeNode
           onAddChildren={handleAddTreeMember}
           onEditNode={handleEditNode}
+          onDeleteNode={handleDeleteTreeNode}
           {...n}
         />
       )}

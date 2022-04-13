@@ -4,6 +4,7 @@ declare namespace CustomTreeNodeModuleScssNamespace {
     buton_delete: string;
     buton_edit: string;
     button: string;
+    name: string;
     node: string;
     node_blue: string;
     root: string;
