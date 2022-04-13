@@ -9,7 +9,7 @@ const translateData = {
   y: window.innerHeight / 2 - 15,
 };
 
-// const sizeData = { x: 450, y: 60 };
+const sizeData = { x: 380, y: 140 };
 
 const CustomTree: FC<{
   tree: RawNodeDatum[];
@@ -19,18 +19,13 @@ const CustomTree: FC<{
     setTree((state) => addTreeChildrenNode(state, node));
   };
 
-  // const handleAddTreeMember = (node: {data: TreeNodeDatum} ) => {
-  //   setTree((state) => addTreeChildrenNode(state, node.data));
-  // };
-
   return (
     <Tree
       data={tree}
-      // onNodeClick={handleAddTreeMember}
-      // nodeSize={sizeData}
+      nodeSize={sizeData}
       translate={translateData}
       orientation="horizontal"
-      pathFunc="step"
+      pathFunc="diagonal"
       collapsible={false}
       renderCustomNodeElement={(n) => (
         <CustomTreeNode onAddChildren={handleAddTreeMember} {...n} />
