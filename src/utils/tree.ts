@@ -71,3 +71,14 @@ export const deleteTreeNode = (
 
   return [...tree];
 };
+
+export const transformTreeWithId = (tree: RawNodeDatum[]): RawNodeDatum[] => {
+  const fun = (n: RawNodeDatum): RawNodeDatum => ({
+    ...n,
+    attributes: { ...n.attributes, id: Math.random() },
+    children:
+      n.children && n.children.length > 0 ? n.children?.map((n) => fun(n)) : [],
+  });
+
+  return tree.map((n) => fun(n));
+};
