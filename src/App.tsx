@@ -26,7 +26,7 @@ const App = () => {
   return (
     <main className={styles.main}>
       <h1>react-d3</h1>
-      <section>
+      <section className={styles.section}>
         <CustomTree tree={tree} setTree={setTree} />
       </section>
     </main>
