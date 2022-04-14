@@ -25,7 +25,10 @@ const App = () => {
 
   return (
     <main className={styles.main}>
-      <CustomTree tree={tree} setTree={setTree} />
+      <h1>react-d3</h1>
+      <section>
+        <CustomTree tree={tree} setTree={setTree} />
+      </section>
     </main>
   );
 };

@@ -1,20 +1,23 @@
-import { FC } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import Tree from "react-d3-tree";
 import { RawNodeDatum, TreeNodeDatum } from "react-d3-tree/lib/types/common";
 import { addTreeChildrenNode, deleteTreeNode } from "../../utils/tree";
 import CustomTreeNode from "./Node/CustomTreeNode";
+import styles from "./customTree.module.scss";
 
-const translateData = {
-  x: window.innerWidth / 2 - 170,
-  y: window.innerHeight / 2 - 15,
-};
-
-const sizeData = { x: 250, y: 100 };
+const nodeSize = { x: 250, y: 100 };
 
 const CustomTree: FC<{
   tree: RawNodeDatum[];
   setTree: React.Dispatch<React.SetStateAction<RawNodeDatum[]>>;
-}> = ({ tree, setTree }) => {
+  width?: string | number;
+  height?: string | number;
+}> = ({ tree, setTree, width, height = 400 }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [size, setSize] = useState<{ w: number; h: number } | undefined>(
+    undefined
+  );
+
   const handleAddTreeMember = (node: TreeNodeDatum) => {
     setTree((state) => addTreeChildrenNode(state, node));
   };
@@ -27,23 +30,33 @@ const CustomTree: FC<{
     setTree((state) => deleteTreeNode(state, node));
   };
 
+  useEffect(() => {
+    setSize((state) =>
+      ref.current
+        ? { ...state, h: ref.current.clientHeight, w: ref.current.clientWidth }
+        : state
+    );
+  }, [ref]);
+
   return (
-    <Tree
-      data={tree}
-      nodeSize={sizeData}
-      translate={translateData}
-      orientation="horizontal"
-      pathFunc="diagonal"
-      collapsible={false}
-      renderCustomNodeElement={(n) => (
-        <CustomTreeNode
-          onAddChildren={handleAddTreeMember}
-          onEditNode={handleEditNode}
-          onDeleteNode={handleDeleteTreeNode}
-          {...n}
-        />
-      )}
-    />
+    <div ref={ref} className={styles.root} style={{ width, height }}>
+      <Tree
+        data={tree}
+        nodeSize={nodeSize}
+        translate={{ x: nodeSize.x / 4 + 20, y: size ? size.h / 2 : 0 }}
+        orientation="horizontal"
+        pathFunc="diagonal"
+        collapsible={false}
+        renderCustomNodeElement={(n) => (
+          <CustomTreeNode
+            onAddChildren={handleAddTreeMember}
+            onEditNode={handleEditNode}
+            onDeleteNode={handleDeleteTreeNode}
+            {...n}
+          />
+        )}
+      />
+    </div>
   );
 };
 
