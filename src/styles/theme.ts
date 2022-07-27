@@ -16,6 +16,11 @@ const theme = createTheme({
     // warning: {},
     // info: {},
     // success: {},
+    // action: {
+    //   disabled: "#C4C4C4",
+    //   disabledBackground: "#E4E4E4",
+    //   disabledOpacity: 0.4,
+    // },
   },
   // breakpoints: {
   //   values: {
