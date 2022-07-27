@@ -4,6 +4,7 @@ import { AppRoutes } from "../../router/routers";
 import Image from "../../assets/images/react.png";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { logout } from "../../redux/example/exampleSlice";
+import HomeFonts from "./fonts/HomeFonts";
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -32,6 +33,8 @@ const HomePage = () => {
       <section>
         <img alt="react" src={Image} />
       </section>
+
+      <HomeFonts />
     </main>
   );
 };

@@ -16,7 +16,7 @@
     "@mui/material": "^5.9.2",
     "@reduxjs/toolkit": "^1.8.3",
     "formik": "^2.2.9",
-    "npm-font-open-sans": "^1.1.0",
+    "opensans-npm-webfont": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
