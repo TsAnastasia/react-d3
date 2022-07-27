@@ -1,0 +1,16 @@
+.root {
+  min-width: 500px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.content {
+  padding: 10px;
+  max-width: 300px;
+  min-height: 100px;
+
+  flex: 1;
+}
