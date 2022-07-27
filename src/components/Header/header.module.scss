@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo {
+  text-decoration: none;
+  color: inherit;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  .img {
+    margin-right: 6px;
+    height: 30px;
+    width: 30px;
+
+    background: url("../../assets/images/web-logo.png") center/contain no-repeat;
+  }
+}

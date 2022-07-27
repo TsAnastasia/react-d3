@@ -1,0 +1,17 @@
+.app {
+  margin: 0 auto;
+  min-height: 100vh;
+  min-width: min-content;
+  width: 100%;
+  max-width: 1440px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  main {
+    flex: 1;
+  }
+}
