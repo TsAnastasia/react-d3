@@ -43,7 +43,7 @@ module.exports = {
         },
         formik: {
           test: /[\\/]node_modules[\\/](formik)[\\/]/,
-          name: "redux",
+          name: "formik",
           chunks: "all",
         },
       },
