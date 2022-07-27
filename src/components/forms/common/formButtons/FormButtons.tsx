@@ -10,7 +10,9 @@ const FormButtons: FC<{
   return (
     <div className={scss.root}>
       {onCancel && <AppButton onClick={onCancel}>{cancelText}</AppButton>}
-      <AppButton type="submit">{submitText}</AppButton>
+      <AppButton type="submit" color="secondary" variant="contained">
+        {submitText}
+      </AppButton>
     </div>
   );
 };
