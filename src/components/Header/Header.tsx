@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "../../router/routers";
+import HeaderPopup from "../popups/header/HeaderPopup";
 import scss from "./header.module.scss";
 
 const Header = () => (
   <header className={scss.root}>
     <Link to={AppRoutes.HOME} className={scss.logo}>
       <span className={scss.img} />
-      logo
+      React-d3
     </Link>
+    <HeaderPopup />
   </header>
 );
 

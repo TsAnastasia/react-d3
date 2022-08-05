@@ -1,6 +1,5 @@
 declare namespace ModalModuleScssNamespace {
   export interface IModalModuleScss {
-    btns: string;
     head: string;
     modal: string;
   }

@@ -11,15 +11,10 @@
 
 .head {
   padding: 10px;
+
   border-bottom: 1px solid #c4c4c4;
-}
-
-.btns {
-  padding: 10px;
-
-  border-top: 1px solid #c4c4c4;
 
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 }

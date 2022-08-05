@@ -1,40 +1,25 @@
-import ExamplePopup from "../../components/popups/example/ExamplePopup";
-import AppButton from "../../components/UI/buttons/app/AppButton";
-import { AppRoutes } from "../../router/routers";
-import Image from "../../assets/images/react.png";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { logout } from "../../redux/example/exampleSlice";
-import HomeFonts from "./fonts/HomeFonts";
+import { Link } from "react-router-dom";
+import { pages } from "../../assets/utils/pages";
 
 const HomePage = () => {
-  const dispatch = useAppDispatch();
-  const { isAuth, user } = useAppSelector((state) => state.example);
-
-  const handleLogout = () => {
-    dispatch(logout());
-  };
   return (
     <main>
-      <h1>Home page</h1>
       <section>
-        <AppButton to={AppRoutes.HOME}>go to home page</AppButton>
-
-        <ExamplePopup />
-
-        <AppButton
-          disabled={!isAuth}
-          onClick={handleLogout}
-          variant="contained"
-        >
-          {`logout ${user?.name || ""}`}
-        </AppButton>
+        <h1>React-d3</h1>
+        <p>This project contains from components created with d3. </p>
       </section>
 
       <section>
-        <img alt="react" src={Image} />
+        <h2>Component-d3-examples</h2>
+        <ul>
+          {pages.map(({ route, name, description }) => (
+            <li key={route}>
+              <Link to={route}>{name || route}</Link>
+              {description && <p>{description}</p>}
+            </li>
+          ))}
+        </ul>
       </section>
-
-      <HomeFonts />
     </main>
   );
 };

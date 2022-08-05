@@ -1,6 +1,6 @@
 const Footer = () => (
   <footer>
-    <p>footer</p>
+    <p>&copy; Ana Ts, 2022 </p>
   </footer>
 );
 

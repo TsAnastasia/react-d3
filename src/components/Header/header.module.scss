@@ -1,16 +1,39 @@
 .root {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  position: relative;
+
+  &::after {
+    content: "";
+    height: 1px;
+    width: calc(100% - 20px);
+
+    background: lightgrey;
+
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }
 
 .logo {
   text-decoration: none;
-  color: inherit;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  color: black;
 
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  transition: all 0.3s ease-in-out;
 
   .img {
     margin-right: 6px;
@@ -18,5 +41,9 @@
     width: 30px;
 
     background: url("../../assets/images/web-logo.png") center/contain no-repeat;
+  }
+
+  &:hover {
+    opacity: 0.6;
   }
 }

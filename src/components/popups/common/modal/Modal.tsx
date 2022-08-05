@@ -15,14 +15,15 @@ const Modal: FC<{
       {title && (
         <div className={scss.head}>
           <p>{title}</p>
+
+          {hasCloseBtn && (
+            <AppButton onClick={onClose} color="secondary">
+              X
+            </AppButton>
+          )}
         </div>
       )}
       {children}
-      {hasCloseBtn && (
-        <div className={scss.btns}>
-          <AppButton onClick={onClose}>close</AppButton>
-        </div>
-      )}
     </Dialog>
   );
 };

@@ -11,6 +11,7 @@ const AppButton = styled(({ to, ...props }: I) => {
 
   return <Button {...props} {...linkProps} />;
 })({
+  minWidth: "auto",
   textTransform: "none",
 });
 
