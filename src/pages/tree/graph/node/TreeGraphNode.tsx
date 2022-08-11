@@ -1,5 +1,6 @@
-import { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { CustomNodeElementProps } from "react-d3-tree/lib/types/common";
+import scss from "./treeGraphNode.module.scss";
 
 const TreeGraphNode: FC<CustomNodeElementProps> = ({ nodeDatum }) => {
   const nodeRef = useRef<HTMLDivElement | null>(null);
@@ -9,19 +10,32 @@ const TreeGraphNode: FC<CustomNodeElementProps> = ({ nodeDatum }) => {
 
   useEffect(() => {
     setNodeSize({
-      height: nodeRef.current?.clientHeight,
-      width: nodeRef.current?.clientWidth,
+      height: nodeRef.current?.offsetHeight,
+      width: nodeRef.current?.offsetWidth,
     });
   }, []);
 
-  useEffect(() => {
-    console.log("nodeSize", nodeSize);
-  }, [nodeSize]);
-
   return (
-    <foreignObject width={nodeSize?.width} height={nodeSize?.height}>
-      <div ref={nodeRef} style={{ display: "inline-block" }}>
-        <p>{nodeDatum.name}</p>
+    <foreignObject
+      width={nodeSize?.width}
+      height={nodeSize?.height}
+      transform={`translate(-${(nodeSize?.width || 0) / 2}, -${
+        (nodeSize?.height || 0) / 2
+      })`}
+    >
+      <div ref={nodeRef} className={scss.root}>
+        <div className={scss.node}>
+          <p className={scss.name}>{nodeDatum.name}</p>
+          <button type="button" className={scss.edit}>
+            edit
+          </button>
+          <button type="button" className={scss.delete}>
+            x
+          </button>
+          <button type="button" className={scss.add}>
+            +
+          </button>
+        </div>
       </div>
     </foreignObject>
   );

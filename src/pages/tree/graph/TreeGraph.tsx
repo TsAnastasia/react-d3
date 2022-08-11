@@ -4,6 +4,8 @@ import { RawNodeDatum } from "react-d3-tree/lib/types/common";
 import TreeGraphNode from "./node/TreeGraphNode";
 import scss from "./treeGraph.module.scss";
 
+const NODE_SIZE = { x: 200, y: 100 };
+
 const TreeGraph: FC<{
   data: RawNodeDatum;
   width?: string | number;
@@ -26,7 +28,11 @@ const TreeGraph: FC<{
       <Tree
         data={data}
         svgClassName={scss.graph}
-        translate={{ x: 10, y: (containerSize?.height || 0) / 2 }}
+        nodeSize={NODE_SIZE}
+        translate={{
+          x: 80,
+          y: (containerSize?.height || 0) / 2,
+        }}
         renderCustomNodeElement={(props) => <TreeGraphNode {...props} />}
       />
     </div>
