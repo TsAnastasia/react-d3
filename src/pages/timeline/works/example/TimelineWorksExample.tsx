@@ -23,7 +23,7 @@ const subsets = groups.map((name) =>
 
 const alldates = data.map((p) => p.start);
 
-const TimelineWorksGraph = () => {
+const TimelineWorksExample = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -86,4 +86,4 @@ const TimelineWorksGraph = () => {
   );
 };
 
-export default TimelineWorksGraph;
+export default TimelineWorksExample;
