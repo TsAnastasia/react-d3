@@ -28,7 +28,25 @@ const TimelineWorksExample = () => {
 
   useEffect(() => {
     if (containerRef.current) {
-      const div = d3.select(containerRef.current);
+      // const div = d3.select(containerRef.current);
+
+      // const { width, height } = containerRef.current.getBoundingClientRect();
+
+      const svg = d3
+        .select(containerRef.current)
+        .append("svg")
+        .attr("viewBox", [width / 2, -height / 2, width, height])
+        .style("height", height)
+        .call(
+          d3.zoom().on(
+            "zoom",
+            (event) => svgGroup.attr("transform", event.transform)
+
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ) as any
+        );
+
+      const svgGroup = svg.append("g");
 
       const domain1 = d3.extent(alldates) as number[];
       const color1 = d3
@@ -40,14 +58,16 @@ const TimelineWorksExample = () => {
         .domain(domain1)
         .range([0, width - margin.left - margin.right]);
 
-      const svg = div
-        .append("svg")
-        .attr("viewBox", [0, 0, width, height])
-        .style("width", width)
-        .style("height", height);
+      // const svg = div
+      //   .append("svg")
+      //   .attr("viewBox", [0, 0, width, height])
+      //   .style("width", width)
+      //   .style("height", height);
 
       subsets.forEach((subset, i) => {
-        const g1 = svg.append("g").attr("transform", `translate(0, ${i * 20})`);
+        const g1 = svgGroup
+          .append("g")
+          .attr("transform", `translate(0, ${i * 20})`);
         g1.selectAll()
           .data(subset)
           .join((enter) => enter.append("rect"))
@@ -57,23 +77,23 @@ const TimelineWorksExample = () => {
           .attr("height", "18")
           .attr("fill", (d, i) => color1(String(i)));
 
-        const div1 = div
-          .append("div")
-          .style("position", "absolute")
-          .style("top", "0")
-          .style("left", "0");
+        // const div1 = div
+        //   .append("div")
+        //   .style("position", "absolute")
+        //   .style("top", "0")
+        //   .style("left", "0");
 
-        div1
-          .selectAll()
-          .data(subset)
-          .join((enter) => enter.append("div"))
-          .style("position", "absolute")
-          .style("margin", "4px")
-          .style("left", (d) => x(d.start) + "px")
-          .style("top", `${i * 20 + 2}px`)
-          .style("width", (d) => `${x(d.end) - x(d.start) - 2}px`)
-          .style("height", "auto")
-          .text((d) => d.name);
+        // div1
+        //   .selectAll()
+        //   .data(subset)
+        //   .join((enter) => enter.append("div"))
+        //   .style("position", "absolute")
+        //   .style("margin", "4px")
+        //   .style("left", (d) => x(d.start) + "px")
+        //   .style("top", `${i * 20 + 2}px`)
+        //   .style("width", (d) => `${x(d.end) - x(d.start) - 2}px`)
+        //   .style("height", "auto")
+        //   .text((d) => d.name);
       });
     }
   }, []);
