@@ -6,12 +6,17 @@ const BLOCK_HEIGHT = 50;
 const PADDING = 20;
 const ROW_STEP = 50;
 
+const DATA_ROWS = Math.max(...data.map((i) => i.row));
 const DATA_HEIGHT =
-  (BLOCK_HEIGHT + ROW_STEP) * Math.max(...data.map((i) => i.row)) -
-  ROW_STEP +
-  2 * PADDING;
+  (BLOCK_HEIGHT + ROW_STEP) * DATA_ROWS - ROW_STEP + 2 * PADDING;
 // const DATA_WIDTH =
 //   Math.max(...data.map((i) => i.end)) - Math.min(...data.map((i) => i.start));
+
+const colors = d3
+  .scaleLinear()
+  .domain([0, DATA_ROWS])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  .range(["#00DFFF", "#07C2D5 "] as any);
 
 const TimelineWorksGraph = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -19,6 +24,11 @@ const TimelineWorksGraph = () => {
   useEffect(() => {
     if (containerRef.current) {
       const { width, height } = containerRef.current.getBoundingClientRect();
+
+      const widthScale = d3
+        .scaleLinear()
+        .domain([0, Math.max(...data.map((i) => i.end))])
+        .range([0, width - 2 * PADDING]);
 
       const svg = d3
         .select(containerRef.current)
@@ -51,7 +61,7 @@ const TimelineWorksGraph = () => {
           .append("rect")
           .attr("width", work.end - work.start)
           .attr("height", BLOCK_HEIGHT)
-          .attr("fill", "#66c2a5")
+          .attr("fill", () => colors(work.row))
           .attr("rx", 5);
 
         workBox
@@ -67,6 +77,11 @@ const TimelineWorksGraph = () => {
           .text(work.name)
           .attr("color", "red");
       });
+
+      svgGroup
+        .append("g")
+        .attr("transform", `translate(${0}, ${height - 100})`)
+        .call(d3.axisBottom(widthScale));
     }
   }, []);
 
@@ -74,7 +89,7 @@ const TimelineWorksGraph = () => {
     <div
       ref={containerRef}
       style={{
-        height: DATA_HEIGHT,
+        height: DATA_HEIGHT + 100,
         maxHeight: 700,
         border: "1px solid black",
       }}
