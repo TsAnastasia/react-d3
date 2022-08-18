@@ -1,6 +1,7 @@
 import * as d3 from "d3";
 import { useEffect, useRef } from "react";
 import TutorialChart from "./chart/TutorialChart";
+import TutorialPie from "./pie/TutorialPie";
 import TutorialShapes from "./shapes/TutorialShapes";
 
 const TutorialPage = () => {
@@ -20,8 +21,10 @@ const TutorialPage = () => {
     <main>
       <h1>Tutorial</h1>
 
+      <TutorialPie />
+
       <section>
-        <h1>example</h1>{" "}
+        <h1>example</h1>
         <div
           ref={containerRef}
           style={{ border: "1px solid #000", display: "inline-block" }}

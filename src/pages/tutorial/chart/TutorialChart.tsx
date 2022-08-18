@@ -18,7 +18,7 @@ const TutorialChart = () => {
         .scaleLinear()
         .domain([0, dataArr.length])
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .range(["red  ", "blue"] as any);
+        .range(["red", "blue"] as any);
 
       const svg = d3
         .select(containerRef.current)
