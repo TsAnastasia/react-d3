@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import TutorialChart from "./chart/TutorialChart";
 import TutorialPie from "./pie/TutorialPie";
 import TutorialShapes from "./shapes/TutorialShapes";
+import TutorialTree from "./tree/TutorialTree";
 
 const TutorialPage = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -20,6 +21,7 @@ const TutorialPage = () => {
   return (
     <main>
       <h1>Tutorial</h1>
+      <TutorialTree />
 
       <section>
         <h1>example</h1>
