@@ -1,17 +1,23 @@
 import * as d3 from "d3";
 import { FC, useEffect, useRef } from "react";
-const DATA: number[] = [
-  10, 50, 80, 90, 20, 70, 100, 60, 50, 100, 60, 60, 10, 50, 80, 90, 20, 70, 100,
-  60, 50, 100, 60, 60,
-];
 
 const TutorialPie: FC<{
+  data: number[];
+  labels?: (string | number)[];
   height?: number;
   width?: number;
   padding?: number;
   radius?: number;
   pieWidth?: number;
-}> = ({ height = 300, width, padding = 20, radius, pieWidth }) => {
+}> = ({
+  data,
+  labels = data,
+  height = 300,
+  width = height,
+  padding = 20,
+  radius,
+  pieWidth,
+}) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -24,7 +30,7 @@ const TutorialPie: FC<{
 
       const colors = d3.quantize(
         (t) => d3.interpolateRainbow(t * 0.8 + 0.1),
-        DATA.length
+        data.length
       );
 
       const arc = d3
@@ -43,13 +49,14 @@ const TutorialPie: FC<{
           `translate(${padding + RADIUS}, ${padding + RADIUS})`
         )
         .selectAll()
-        .data(d3.pie().sort(null)(DATA))
+        .data(d3.pie().sort(null)(data))
         .enter()
-        .append("g");
-      // .attr("class", "arc");
+        .append("g")
+        .attr("class", "arc");
 
       arcs
         .append("path")
+        .attr("class", "arc__path")
         .attr("stroke-width", 0.5)
         .attr("stroke", "#fff")
         .attr(
@@ -66,13 +73,18 @@ const TutorialPie: FC<{
         .append("text")
         .attr(
           "transform",
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (d) => `translate(${arc.innerRadius(100).centroid(d as any)})`
+          (d) =>
+            `translate(${arc
+              // .innerRadius(RADIUS - 40)
+              // .outerRadius(RADIUS)
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              .centroid(d as any)})`
         )
         .attr("text-anchor", "middle")
-        .text((d) => String(d.data));
+        .text((d, i) => String(labels[i]))
+        .attr("class", "arc__value");
     }
-  }, [height, padding, pieWidth, radius, width]);
+  }, [height, padding, pieWidth, radius, width, data, labels]);
 
   return (
     <section>

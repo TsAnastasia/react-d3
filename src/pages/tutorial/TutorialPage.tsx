@@ -21,8 +21,6 @@ const TutorialPage = () => {
     <main>
       <h1>Tutorial</h1>
 
-      <TutorialPie />
-
       <section>
         <h1>example</h1>
         <div
@@ -33,6 +31,13 @@ const TutorialPage = () => {
 
       <TutorialShapes />
       <TutorialChart />
+
+      <TutorialPie
+        data={[10, 42, 25, 36]}
+        // labels={Array(4)
+        //   .fill("")
+        //   .map((_, i) => i + 1)}
+      />
     </main>
   );
 };
