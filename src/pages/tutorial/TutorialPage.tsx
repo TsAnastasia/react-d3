@@ -15,14 +15,21 @@ enum SectionsEnum {
 const DATA = {
   name: "Max",
   children: [
-    { name: "Mr X" },
+    { name: "Mr X", value: 200 },
     {
       name: "Sylvia",
-      children: [{ name: "Craig" }, { name: "Robin" }, { name: "Anna" }],
+      children: [
+        { name: "Craig", value: 75 },
+        { name: "Robin", value: 65 },
+        { name: "Anna", value: 50 },
+      ],
     },
     {
       name: "David",
-      children: [{ name: "Jeff" }, { name: "Buffy" }],
+      children: [
+        { name: "Jeff", value: 80 },
+        { name: "Buffy", value: 45 },
+      ],
     },
   ],
 };
@@ -41,11 +48,6 @@ const TutorialPage = () => {
           ))}
         </ul>
       </nav>
-
-      <section id={SectionsEnum.CLASTER}>
-        <h2>Cluster</h2>
-        <TutorialCluster />
-      </section>
 
       <section id={SectionsEnum.SHAPES}>
         <h2>Shapes</h2>
@@ -70,6 +72,11 @@ const TutorialPage = () => {
       <section id={SectionsEnum.TREE}>
         <h2>Tree</h2>
         <TutorialTree data={DATA} />
+      </section>
+
+      <section id={SectionsEnum.CLASTER}>
+        <h2>Cluster (pack) layout</h2>
+        <TutorialCluster data={DATA} />
       </section>
     </main>
   );
