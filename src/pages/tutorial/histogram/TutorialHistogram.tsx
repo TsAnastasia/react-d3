@@ -26,6 +26,11 @@ const TutorialHistogram: FC<{
       const xRange = [0, width - SCALE_SIZE - 2 * padding];
       const yRange = [height - SCALE_SIZE - 2 * padding, 0];
 
+      const calcHeight = (d: d3.Bin<number, number>) =>
+        height - yScale(d.length) - SCALE_SIZE - 2 * padding;
+      const calcWidth = (d: d3.Bin<number, number>) =>
+        Math.max(0, xScale(d.x1 || 0) - xScale(d.x0 || 0) - between);
+
       const svg = d3
         .select(containerRef.current)
         .append("svg")
@@ -51,20 +56,31 @@ const TutorialHistogram: FC<{
         .selectAll()
         .data(histogram)
         .enter()
-        .append("g");
+        .append("g")
+        .attr(
+          "transform",
+          (d) =>
+            `translate(${xScale(d.x0 || 0) + between / 2}, ${yScale(d.length)})`
+        );
 
       bars
         .append("rect")
-        .attr("x", (d) => xScale(d.x0 || 0) + between / 2)
-        .attr("width", (d) =>
-          Math.max(0, xScale(d.x1 || 0) - xScale(d.x0 || 0) - between)
-        )
-        .attr("y", (d) => yScale(d.length))
-        .attr(
-          "height",
-          (d) => height - yScale(d.length) - SCALE_SIZE - 2 * padding
-        )
+        .attr("x", 0)
+        .attr("width", calcWidth)
+        .attr("y", 0)
+        .attr("height", calcHeight)
         .attr("fill", (d) => d3.interpolateCool(1 - d.length / yDomain[1]));
+
+      bars
+        .append("text")
+        .text((d) => d.length)
+        .attr("fill", "#fff")
+        .attr("text-anchor", "middle")
+        .attr("font-size", 12)
+        .attr(
+          "transform",
+          (d) => `translate(${calcWidth(d) / 2}, ${calcHeight(d) / 2 + 5})`
+        );
 
       svg
         .append("g")

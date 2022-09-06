@@ -88,7 +88,7 @@ const TutorialPage = () => {
             .fill("")
             .map(() => Math.floor(Math.random() * 80))}
           between={2}
-          thresholds={80}
+          thresholds={40}
         />
       </section>
     </main>
