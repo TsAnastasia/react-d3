@@ -1,25 +1,17 @@
 import * as d3 from "d3";
 import { FC, useEffect, useRef } from "react";
 
-const DATA = {
-  name: "Max",
-  children: [
-    {
-      name: "Sylvia",
-      children: [{ name: "Craig" }, { name: "Robin" }, { name: "Anna" }],
-    },
-    {
-      name: "David",
-      children: [{ name: "Jeff" }, { name: "Buffy" }],
-    },
-  ],
-};
+interface INodeData {
+  name: string;
+  children?: INodeData[];
+}
 
 const TutorialTree: FC<{
+  data: INodeData;
   height?: number;
   width?: number;
   padding?: number;
-}> = ({ height = 300, width, padding = 20 }) => {
+}> = ({ data, height = 300, width, padding = 20 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -40,12 +32,11 @@ const TutorialTree: FC<{
         .y((d) => d[1]);
 
       const tree = d3.tree().size([width - 2 * padding, height - 2 * padding])(
-        d3.hierarchy(DATA)
+        d3.hierarchy(data)
       );
 
       const nodes = tree.descendants();
       const links = tree.links();
-      console.log(links);
 
       const colors = d3.quantize(
         (t) => d3.interpolateRainbow(t * 0.8 + 0.1),
@@ -89,20 +80,17 @@ const TutorialTree: FC<{
         .attr("fill", (_, i) => colors[i])
         .attr("transform", "translate(10,5)");
     }
-  }, [padding]);
+  }, [data, padding]);
 
   return (
-    <section>
-      <h1>Tree</h1>
-      <div
-        ref={containerRef}
-        style={{
-          border: "1px solid #000",
-          width,
-          height,
-        }}
-      />
-    </section>
+    <div
+      ref={containerRef}
+      style={{
+        border: "1px solid #000",
+        width,
+        height,
+      }}
+    />
   );
 };
 

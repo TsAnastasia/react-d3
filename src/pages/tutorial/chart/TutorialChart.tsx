@@ -1,59 +1,78 @@
 import * as d3 from "d3";
-import { useEffect, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 
-const dataArr = [20, 40, 50, 70, 120];
-const MAX = Math.max(...dataArr);
-const PADDING = 20;
-const WIDTH = 500;
-const HEIGHT = 500;
+const SCALE_HEIGHT = 20;
+const SLICE_HEIGHT = 50;
+const SLICE_BETWEEN = 20;
 
-const TutorialChart = () => {
+const TutorialChart: FC<{
+  data: number[];
+  height?: number;
+  width?: number;
+  padding?: number;
+}> = ({
+  data,
+  padding = 20,
+  height = data.length * (SLICE_HEIGHT + SLICE_BETWEEN) +
+    2 * padding +
+    SCALE_HEIGHT,
+  width,
+}) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (containerRef.current) {
-      const widthScale = d3.scaleLinear().domain([0, MAX]).range([0, WIDTH]);
+      const { width, height } = containerRef.current.getBoundingClientRect();
+
+      const widthScale = d3
+        .scaleLinear()
+        .domain([0, Math.max(...data)])
+        .range([0, width - 2 * padding]);
 
       const colors = d3
         .scaleLinear()
-        .domain([0, dataArr.length])
+        .domain([0, data.length])
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .range(["red", "blue"] as any);
 
       const svg = d3
         .select(containerRef.current)
         .append("svg")
-        .attr("width", WIDTH + 2 * PADDING)
-        .attr("height", HEIGHT + 2 * PADDING)
+        .attr("width", width)
+        .attr("height", height)
         .append("g")
-        .attr("transform", `translate(${PADDING}, ${PADDING})`);
+        .attr("transform", `translate(${padding}, ${padding})`);
 
       // const bars =
       svg
         .selectAll("rect")
-        .data(dataArr)
+        .data(data)
         .enter()
         .append("rect")
         .attr("width", (d) => widthScale(d))
-        .attr("height", 50)
+        .attr("height", SLICE_HEIGHT)
         .attr("fill", (d, i) => colors(i))
-        .attr("y", (d, i) => 70 * i);
+        .attr("y", (d, i) => (SLICE_HEIGHT + SLICE_BETWEEN) * i);
 
       svg
         .append("g")
-        .attr("transform", `translate(${0}, ${HEIGHT - 100})`)
+        .attr(
+          "transform",
+          `translate(${0}, ${height - SCALE_HEIGHT - 2 * padding})`
+        )
         .call(d3.axisBottom(widthScale));
     }
-  }, []);
+  }, [data, padding]);
 
   return (
-    <section>
-      <h2>Visualizing data</h2>
-      <div
-        ref={containerRef}
-        style={{ border: "1px solid #000", display: "inline-block" }}
-      />
-    </section>
+    <div
+      ref={containerRef}
+      style={{
+        border: "1px solid #000",
+        width,
+        height,
+      }}
+    />
   );
 };
 

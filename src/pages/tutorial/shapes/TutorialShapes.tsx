@@ -37,13 +37,10 @@ const TutorialShapes = () => {
   }, []);
 
   return (
-    <section>
-      <h2>Shapes</h2>
-      <div
-        ref={containerRef}
-        style={{ border: "1px solid #000", display: "inline-block" }}
-      />
-    </section>
+    <div
+      ref={containerRef}
+      style={{ border: "1px solid #000", display: "inline-block" }}
+    />
   );
 };
 

@@ -87,17 +87,14 @@ const TutorialPie: FC<{
   }, [height, padding, pieWidth, radius, width, data, labels]);
 
   return (
-    <section>
-      <h1>Pie chart</h1>
-      <div
-        ref={containerRef}
-        style={{
-          border: "1px solid #000",
-          width,
-          height,
-        }}
-      />
-    </section>
+    <div
+      ref={containerRef}
+      style={{
+        border: "1px solid #000",
+        width,
+        height,
+      }}
+    />
   );
 };
 
