@@ -1,5 +1,6 @@
 import TutorialChart from "./chart/TutorialChart";
 import TutorialCluster from "./cluster/TutorialCluster";
+import TutorialHistogram from "./histogram/TutorialHistogram";
 import TutorialPie from "./pie/TutorialPie";
 import TutorialShapes from "./shapes/TutorialShapes";
 import TutorialTree from "./tree/TutorialTree";
@@ -10,6 +11,7 @@ enum SectionsEnum {
   PIE = "pie",
   TREE = "tree",
   CLASTER = "claster",
+  HISTOGRAM = "histogram",
 }
 
 const DATA = {
@@ -48,6 +50,15 @@ const TutorialPage = () => {
           ))}
         </ul>
       </nav>
+
+      <section id={SectionsEnum.SHAPES}>
+        <h2>Histogram</h2>
+        <TutorialHistogram
+          data={Array(50)
+            .fill("")
+            .map(() => Math.floor(Math.random() * 100))}
+        />
+      </section>
 
       <section id={SectionsEnum.SHAPES}>
         <h2>Shapes</h2>
