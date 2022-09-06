@@ -62,6 +62,10 @@ const TutorialChart: FC<{
         )
         .call(d3.axisBottom(widthScale));
     }
+
+    return () => {
+      containerRef.current = null;
+    };
   }, [data, padding]);
 
   return (

@@ -80,6 +80,10 @@ const TutorialTree: FC<{
         .attr("fill", (_, i) => colors[i])
         .attr("transform", "translate(10,5)");
     }
+
+    return () => {
+      containerRef.current = null;
+    };
   }, [data, padding]);
 
   return (

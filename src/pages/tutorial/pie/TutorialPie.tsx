@@ -84,6 +84,10 @@ const TutorialPie: FC<{
         .text((d, i) => String(labels[i]))
         .attr("class", "arc__value");
     }
+
+    return () => {
+      containerRef.current = null;
+    };
   }, [height, padding, pieWidth, radius, width, data, labels]);
 
   return (

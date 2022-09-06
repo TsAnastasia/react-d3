@@ -9,8 +9,8 @@ const TutorialShapes = () => {
       const svg = d3
         .select(containerRef.current)
         .append("svg")
-        .attr("height", 500)
-        .attr("width", 500);
+        .attr("height", 400)
+        .attr("width", 400);
 
       svg
         .append("circle") // круг
@@ -34,6 +34,10 @@ const TutorialShapes = () => {
         .attr("stroke", "green")
         .attr("stroke-width", 2);
     }
+
+    return () => {
+      containerRef.current = null;
+    };
   }, []);
 
   return (
