@@ -54,9 +54,11 @@ const TutorialPage = () => {
       <section id={SectionsEnum.SHAPES}>
         <h2>Histogram</h2>
         <TutorialHistogram
-          data={Array(50)
+          data={Array(200)
             .fill("")
-            .map(() => Math.floor(Math.random() * 100))}
+            .map(() => Math.floor(Math.random() * 80))}
+          between={2}
+          thresholds={80}
         />
       </section>
 

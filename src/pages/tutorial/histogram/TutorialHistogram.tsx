@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import { FC, useEffect, useRef } from "react";
 
-const SCALE_SIZE = 30;
+const SCALE_SIZE = 20;
 
 const TutorialHistogram: FC<{
   data: number[];
@@ -9,23 +9,32 @@ const TutorialHistogram: FC<{
   width?: number;
   padding?: number;
   between?: number;
-}> = ({ data, padding = 20, height = 300, width, between = 5 }) => {
+  thresholds?: number;
+}> = ({
+  data,
+  padding = 20,
+  height = 300,
+  width,
+  between = 5,
+  thresholds = 5,
+}) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (containerRef.current) {
       const { width, height } = containerRef.current.getBoundingClientRect();
-
-      const xRange = [padding, width - 2 * padding - SCALE_SIZE];
-      const yRange = [height - SCALE_SIZE, padding];
+      const xRange = [0, width - SCALE_SIZE - 2 * padding];
+      const yRange = [height - SCALE_SIZE - 2 * padding, 0];
 
       const svg = d3
         .select(containerRef.current)
         .append("svg")
         .attr("width", width)
-        .attr("height", height);
+        .attr("height", height)
+        .append("g")
+        .attr("transform", `translate(${padding}, ${padding})`);
 
-      const histogram = d3.bin().thresholds(10)(data);
+      const histogram = d3.bin().thresholds(thresholds)(data);
 
       const xDomain = [
         histogram[0].x0 || 0,
@@ -38,7 +47,7 @@ const TutorialHistogram: FC<{
 
       const bars = svg
         .append("g")
-        .attr("transform", `translate(${padding}, 0)`)
+        .attr("transform", `translate(${SCALE_SIZE}, 0)`)
         .selectAll()
         .data(histogram)
         .enter()
@@ -51,26 +60,30 @@ const TutorialHistogram: FC<{
           Math.max(0, xScale(d.x1 || 0) - xScale(d.x0 || 0) - between)
         )
         .attr("y", (d) => yScale(d.length))
-        .attr("height", (d) => height - yScale(d.length) - SCALE_SIZE)
-        .attr("fill", "#c2c4c4");
+        .attr(
+          "height",
+          (d) => height - yScale(d.length) - SCALE_SIZE - 2 * padding
+        )
+        .attr("fill", (d) => d3.interpolateCool(1 - d.length / yDomain[1]));
 
       svg
         .append("g")
-        .attr("transform", `translate(${SCALE_SIZE}, ${0})`)
+        .attr("transform", `translate(${SCALE_SIZE}, 0)`)
         .call(d3.axisLeft(yScale));
 
       svg
         .append("g")
-        .attr("transform", `translate(${padding}, ${height - SCALE_SIZE})`)
+        .attr(
+          "transform",
+          `translate(${SCALE_SIZE}, ${height - SCALE_SIZE - 2 * padding})`
+        )
         .call(d3.axisBottom(xScale));
-
-      console.log(histogram);
     }
 
     return () => {
       containerRef.current = null;
     };
-  }, [between, data, padding]);
+  }, [between, data, padding, thresholds]);
 
   return (
     <div
