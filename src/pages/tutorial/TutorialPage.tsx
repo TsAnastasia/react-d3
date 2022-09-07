@@ -4,6 +4,7 @@ import TutorialHistogram from "./histogram/TutorialHistogram";
 import TutorialPie from "./pie/TutorialPie";
 import TutorialShapes from "./shapes/TutorialShapes";
 import TutorialTree from "./tree/TutorialTree";
+import TutorialTreemap from "./treemap/TutorialTreemap";
 
 enum SectionsEnum {
   SHAPES = "shapes",
@@ -12,6 +13,7 @@ enum SectionsEnum {
   TREE = "tree",
   CLASTER = "claster",
   HISTOGRAM = "histogram",
+  TREEMAP = "treemap",
 }
 
 const DATA = {
@@ -50,6 +52,11 @@ const TutorialPage = () => {
           ))}
         </ul>
       </nav>
+
+      <section id={SectionsEnum.TREEMAP}>
+        <h2>Treemap</h2>
+        <TutorialTreemap data={DATA} />
+      </section>
 
       <section id={SectionsEnum.SHAPES}>
         <h2>Shapes</h2>
