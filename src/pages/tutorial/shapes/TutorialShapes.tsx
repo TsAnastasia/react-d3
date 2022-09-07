@@ -43,7 +43,11 @@ const TutorialShapes = () => {
   return (
     <div
       ref={containerRef}
-      style={{ border: "1px solid #000", display: "inline-block" }}
+      style={{
+        border: "1px solid #000",
+        display: "inline-block",
+        overflow: "hidden",
+      }}
     />
   );
 };

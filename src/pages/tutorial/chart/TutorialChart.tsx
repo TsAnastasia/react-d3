@@ -79,6 +79,7 @@ const TutorialChart: FC<{
         border: "1px solid #000",
         width,
         height,
+        overflow: "hidden",
       }}
     />
   );
