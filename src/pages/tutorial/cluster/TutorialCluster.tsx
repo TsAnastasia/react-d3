@@ -81,6 +81,7 @@ const TutorialCluster: FC<{
         border: "1px solid #000",
         height,
         width,
+        overflow: "hidden",
       }}
     />
   );
