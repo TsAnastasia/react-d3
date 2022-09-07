@@ -58,7 +58,7 @@ const TutorialPage = () => {
 
       <section id={SectionsEnum.CHART}>
         <h2>Visualizing data</h2>
-        <TutorialChart data={[20, 40, 50, 70, 120]} />
+        <TutorialChart data={[20, 40, 32, 70, 55, 120]} />
       </section>
 
       <section id={SectionsEnum.CHART}>

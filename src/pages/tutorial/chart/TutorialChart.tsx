@@ -2,7 +2,7 @@ import * as d3 from "d3";
 import { FC, useEffect, useRef } from "react";
 
 const SCALE_HEIGHT = 20;
-const SLICE_HEIGHT = 50;
+const SLICE_HEIGHT = 25;
 const SLICE_BETWEEN = 20;
 
 const TutorialChart: FC<{
@@ -51,8 +51,12 @@ const TutorialChart: FC<{
         .append("rect")
         .attr("width", (d) => widthScale(d))
         .attr("height", SLICE_HEIGHT)
-        .attr("fill", (d, i) => colors(i))
-        .attr("y", (d, i) => (SLICE_HEIGHT + SLICE_BETWEEN) * i);
+        .attr("fill", (_, i) => colors(i))
+        .attr("fill-opacity", 0.65)
+        .attr("y", (d, i) => (SLICE_HEIGHT + SLICE_BETWEEN) * i)
+        .attr("stroke", (_, i) => colors(i))
+        .attr("stroke-width", 1)
+        .attr("rx", 3);
 
       svg
         .append("g")
