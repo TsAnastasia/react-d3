@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktemplate=self.webpackChunktemplate||[]).push([[812],{812:(e,n,t)=>{t.r(n),t.d(n,{default:()=>r});var l=t(5893);const r=function(){return(0,l.jsxs)("main",{children:[(0,l.jsx)("h1",{children:"Tree page"}),(0,l.jsx)("p",{style:{color:"red"},children:"in development..."})]})}}}]);
+//# sourceMappingURL=812.chunk.js.map
