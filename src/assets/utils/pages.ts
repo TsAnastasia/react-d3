@@ -9,4 +9,5 @@ export const pages: { route: string; name?: string; description?: string }[] = [
   },
   { route: AppRoutes.TREE, name: "Tree" },
   { route: AppRoutes.TIMELINE, name: "Timelines" },
+  { route: AppRoutes.GRAPHS, name: "Graphs" },
 ];
