@@ -4,6 +4,9 @@ const TerserWebpackPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   mode: "production",
+  output: {
+    publicPath: "/react-d3/",
+  },
   devtool: "source-map",
   plugins: [
     new Dotenv({

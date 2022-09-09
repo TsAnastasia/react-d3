@@ -15,7 +15,7 @@ const root = reactDom.createRoot(
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.REACT_APP_BASE}>
         <ThemeProvider theme={theme}>
           <App />
         </ThemeProvider>
