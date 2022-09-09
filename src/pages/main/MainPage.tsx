@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { pages } from "../../assets/utils/pages";
 
-const HomePage = () => {
+const MainPage = () => {
   return (
     <main>
       <section>
@@ -24,4 +24,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default MainPage;
