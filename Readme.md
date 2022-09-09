@@ -1,4 +1,4 @@
-# Template
+# React-d3
 
 This project created to train d3 packege./
 You can learn different examples to make your own or copy ready-made components for use in your project.
