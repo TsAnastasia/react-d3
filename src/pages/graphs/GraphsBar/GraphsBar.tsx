@@ -57,7 +57,7 @@ const GraphsBar: FC<{
       const content = svg
         .append("g")
         .attr("transform", `translate(${padding},${padding})`);
-
+      // --- SCALES -----------------------------------------------------------
       const x = d3
         .scaleBand()
         .domain(data.map((i) => i.name))
@@ -71,7 +71,7 @@ const GraphsBar: FC<{
           d3.max(data, (d) => d.value) || 0,
         ])
         .range([height - SCALE_SIZE, 0]);
-
+      // ----------------------------------------------------------------------
       // --- BARS -------------------------------------------------------------
       const bars = content
         .append("g")
@@ -104,7 +104,6 @@ const GraphsBar: FC<{
             "transform",
             `translate(${SCALE_SIZE}, ${height - SCALE_SIZE + 2})`
           )
-
           .call(d3.axisBottom(x).tickSizeOuter(0));
 
       const xAxis = content

@@ -35,11 +35,28 @@ const TimelineWorksGraph = () => {
         .append("svg")
         .attr("viewBox", [-PADDING, -PADDING, width, height])
         .call(
-          d3.zoom().on(
-            "zoom",
-            (event) => svgGroup.attr("transform", event.transform)
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ) as any
+          d3
+            .zoom()
+            .scaleExtent([1, 8])
+            .translateExtent([
+              [PADDING, PADDING],
+              [width - PADDING, height - PADDING],
+            ])
+            .extent([
+              [PADDING, PADDING],
+              [width - PADDING, height - PADDING],
+            ])
+            .on(
+              "zoom",
+              (event) => {
+                svgGroup.attr("transform", event.transform);
+                widthScale.range(
+                  [0, width - 2 * PADDING].map((d) => event.transform.applyX(d))
+                );
+                xScale.call(d3.axisBottom(widthScale));
+              }
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            ) as any
         );
 
       const svgGroup = svg.append("g");
@@ -78,7 +95,7 @@ const TimelineWorksGraph = () => {
           .attr("color", "red");
       });
 
-      svgGroup
+      const xScale = svg
         .append("g")
         .attr("transform", `translate(${0}, ${height - 100})`)
         .call(d3.axisBottom(widthScale));
