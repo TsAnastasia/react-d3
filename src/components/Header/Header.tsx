@@ -5,7 +5,7 @@ import scss from "./header.module.scss";
 
 const Header = () => (
   <header className={scss.root}>
-    <Link to={AppRoutes.HOME} className={scss.logo}>
+    <Link to={AppRoutes.MAIN} className={scss.logo}>
       <span className={scss.img} />
       React-d3
     </Link>

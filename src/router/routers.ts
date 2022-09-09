@@ -1,4 +1,6 @@
 export enum AppRoutes {
-  HOME = "/",
+  MAIN = "/",
   TREE = "/tree",
+  TUTORIAL = "/tutorial",
+  TIMELINE = "/timeline",
 }

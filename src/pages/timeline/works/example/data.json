@@ -1,0 +1,235 @@
+[
+  {
+    "start": -946782000000,
+    "name": "Jean Cassou ",
+    "type": "DM",
+    "end": -915159600000,
+    "duration": 31622400000
+  },
+  {
+    "start": -915159600000,
+    "name": "Pierre Ladoué ",
+    "type": "DM",
+    "end": -788929200000,
+    "duration": 126230400000
+  },
+  {
+    "start": -788929200000,
+    "name": "Jean Cassou ",
+    "type": "DM",
+    "end": -157777200000,
+    "duration": 631152000000
+  },
+  {
+    "start": -157777200000,
+    "name": "Bernard Dorival ",
+    "type": "DM",
+    "end": -63169200000,
+    "duration": 94608000000
+  },
+  {
+    "start": -63169200000,
+    "name": "Jean Leymarie ",
+    "type": "DM",
+    "end": 94683600000,
+    "duration": 157852800000
+  },
+  {
+    "start": -10800000,
+    "name": "Robert Bordaz ",
+    "type": "P",
+    "end": 220914000000,
+    "duration": 220924800000
+  },
+  {
+    "start": 63061200000,
+    "name": " Danièle Giraudy - Atelier des enfants ",
+    "type": "DPU/ADE",
+    "end": 347144400000,
+    "duration": 284083200000
+  },
+  {
+    "start": 94683600000,
+    "name": "Pontus Hulten ",
+    "type": "DM",
+    "end": 378680400000,
+    "duration": 283996800000
+  },
+  {
+    "start": 94683600000,
+    "name": "Danièle Giraudy (av. Centre)",
+    "type": "ADE"
+  },
+  { "start": 189291600000, "name": "Jean-Pierre Seguin", "type": "DBPI" },
+  {
+    "start": 220914000000,
+    "name": "Jean Millier ",
+    "type": "P",
+    "end": 315522000000,
+    "duration": 94608000000
+  },
+  { "start": 220914000000, "name": "Danièle Giraudy ", "type": "ADE" },
+  { "start": 220914000000, "name": "René Fillet", "type": "DBPI" },
+  { "start": 220914000000, "name": "Pierre Boulez", "type": "DIrc" },
+  {
+    "start": 315522000000,
+    "name": "Jean-Claude Groshens ",
+    "type": "P",
+    "end": 410216400000,
+    "duration": 94694400000
+  },
+  { "start": 347144400000, "name": "Gaëlle Bernard", "type": "ADE" },
+  {
+    "start": 347144400000,
+    "name": "Gaëlle Bernard - Atelier des enfants ",
+    "type": "DPU/ADE",
+    "end": 599605200000,
+    "duration": 252460800000
+  },
+  {
+    "start": 378680400000,
+    "name": "Dominique Bozo ",
+    "type": "DM",
+    "end": 504910800000,
+    "duration": 126230400000
+  },
+  {
+    "start": 410216400000,
+    "name": "Jean Maheu ",
+    "type": "P",
+    "end": 599605200000,
+    "duration": 189388800000
+  },
+  { "start": 410216400000, "name": "Michel Melot ", "type": "DBPI" },
+  {
+    "start": 504910800000,
+    "name": "Bernard Ceysson ",
+    "type": "DM",
+    "end": 536446800000,
+    "duration": 31536000000
+  },
+  {
+    "start": 536446800000,
+    "name": "Jean Hubert Martin ",
+    "type": "DM",
+    "end": 662677200000,
+    "duration": 126230400000
+  },
+  {
+    "start": 599605200000,
+    "name": "Hélène Arweiler ",
+    "type": "P",
+    "end": 662677200000,
+    "duration": 63072000000
+  },
+  {
+    "start": 599605200000,
+    "name": "Rattaché à la DPU",
+    "type": "DPU/ADE",
+    "end": 915138000000,
+    "duration": 315532800000
+  },
+  { "start": 631141200000, "name": "Jacques Bourgain", "type": "DBPI" },
+  {
+    "start": 662677200000,
+    "name": "Dominique Bozo ",
+    "type": "P",
+    "end": 725835600000,
+    "duration": 63158400000
+  },
+  {
+    "start": 662677200000,
+    "name": "Dominique Bozo ",
+    "type": "DM",
+    "end": 694216800000,
+    "duration": 31539600000
+  },
+  {
+    "start": 694216800000,
+    "name": "Germaine Viatte ",
+    "type": "DM",
+    "end": 852066000000,
+    "duration": 157849200000
+  },
+  { "start": 694216800000, "name": "Laurent Bayle", "type": "DIrc" },
+  {
+    "start": 725835600000,
+    "name": "François Barré",
+    "type": "P",
+    "end": 820443600000,
+    "duration": 94608000000
+  },
+  { "start": 725835600000, "name": "Martine Blanc-Montmayeur", "type": "DBPI" },
+  {
+    "start": 820443600000,
+    "name": "Jean-Jacques Aillagon ",
+    "type": "P",
+    "end": 1009832400000,
+    "duration": 189388800000
+  },
+  {
+    "start": 852066000000,
+    "name": "Werner Spies ",
+    "type": "DM",
+    "end": 946674000000,
+    "duration": 94608000000
+  },
+  {
+    "start": 915138000000,
+    "name": "Rattaché à la DPU",
+    "type": "DPU/ADE",
+    "end": 1388520000000,
+    "duration": 473382000000
+  },
+  {
+    "start": 946674000000,
+    "name": "Alfred Pacquement ",
+    "type": "DM",
+    "end": 1356984000000,
+    "duration": 410310000000
+  },
+  { "start": 978296400000, "name": "Gérald Grundberg", "type": "DBPI" },
+  {
+    "start": 1009832400000,
+    "name": "Bruno Racine ",
+    "type": "P",
+    "end": 1167598800000,
+    "duration": 157766400000
+  },
+  { "start": 1009832400000, "name": "Bernard Stiegler ", "type": "DIrc" },
+  { "start": 1136062800000, "name": "Thierry Grognet ", "type": "DBPI" },
+  { "start": 1136062800000, "name": "Franck Madlener", "type": "DIrc" },
+  {
+    "start": 1167598800000,
+    "name": "Alain Seban ",
+    "type": "P",
+    "end": 1420059600000,
+    "duration": 252460800000
+  },
+  { "start": 1262293200000, "name": "Patrick Bazin", "type": "DBPI" },
+  {
+    "start": 1356984000000,
+    "name": "Bernard Blistène ",
+    "type": "DM",
+    "end": 1609448400000,
+    "duration": 252464400000
+  },
+  {
+    "start": 1388520000000,
+    "name": "Catherine Gillou",
+    "type": "DPU/ADE",
+    "end": 1640984400000,
+    "duration": 252464400000
+  },
+  { "start": 1388520000000, "name": "Christine Carrier", "type": "DBPI" },
+  {
+    "start": 1420059600000,
+    "name": "Serge Lasvignes ",
+    "type": "P",
+    "end": 1609448400000,
+    "duration": 189388800000
+  },
+  { "start": 1609448400000, "name": "Laurent Le Bon ", "type": "P" },
+  { "start": 1609448400000, "name": "Xavier Rey ", "type": "DM" },
+  { "start": 1640984400000, "name": "David Cascaro", "type": "DPU/ADE" }
+]
