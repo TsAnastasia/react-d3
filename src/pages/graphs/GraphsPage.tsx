@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import GraphsBar from "./GraphsBar/GraphsBar";
+import GraphsScatter from "./scatter/GraphsScatter";
 
 const GraphsPage = () => {
   const [color, setColor] = useState("#add8e6");
@@ -12,6 +13,12 @@ const GraphsPage = () => {
     <main>
       <h1>Graphs page</h1>
       <p style={{ color: "red" }}>in development...</p>
+
+      <section>
+        <h2>Scatter plot</h2>
+        <GraphsScatter />
+      </section>
+
       <section>
         <h2>Zoom line graph</h2>
 
