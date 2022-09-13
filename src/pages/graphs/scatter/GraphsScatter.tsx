@@ -4,6 +4,8 @@ import data from "./data.json";
 
 type NodeType = typeof data[number];
 const SCALE_SIZE = 30;
+const XSCALE_RANGE = [4, 8];
+const YSCALE_RANGE = [0, 9];
 
 const GraphsScatter: FC<{
   height?: number;
@@ -18,7 +20,6 @@ const GraphsScatter: FC<{
       const width = boxSize.width - SCALE_SIZE - 2 * padding;
       const height = boxSize.height - SCALE_SIZE - 2 * padding;
 
-      // append the SVG object to the container
       const svg = d3
         .select(containerRef.current)
         .append("svg")
@@ -27,15 +28,15 @@ const GraphsScatter: FC<{
         .append("g")
         .attr("transform", `translate(${SCALE_SIZE + padding},${padding})`);
 
-      // Add X axis
-      const x = d3.scaleLinear().domain([4, 8]).range([0, width]);
+      // X axis
+      const x = d3.scaleLinear().domain(XSCALE_RANGE).range([0, width]);
       const xAxis = svg
         .append("g")
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x));
 
-      // Add Y axis
-      const y = d3.scaleLinear().domain([0, 9]).range([height, 0]);
+      // Y axis
+      const y = d3.scaleLinear().domain(YSCALE_RANGE).range([height, 0]);
       const yAxis = svg.append("g").call(d3.axisLeft(y));
 
       // Add a clipPath: everything out of this area won't be drawn.
@@ -53,12 +54,12 @@ const GraphsScatter: FC<{
       // Create the scatter variable: where both the circles and the brush take place
       const scatter = svg.append("g").attr("clip-path", "url(#clip)");
 
-      // Add circles
       scatter
         .selectAll()
         .data(data)
         .enter()
         .append("circle")
+        .attr("class", "node")
         .attr("cx", (d) => x(d.Sepal_Length))
         .attr("cy", function (d) {
           return y(d.Petal_Length);
@@ -67,7 +68,7 @@ const GraphsScatter: FC<{
         .style("fill", "#61a3a9")
         .style("opacity", 0.5);
 
-      // This add an invisible rect on top of the chart area. This rect can recover pointer events: necessary to understand when the user zoom
+      // invisible rect on top of the chart area, where recover pointer events (necessary to understand when the user zoom)
       svg
         .append("rect")
         .attr("width", width)
@@ -97,10 +98,10 @@ const GraphsScatter: FC<{
 
               // update circle position
               scatter
-                .selectAll("circle")
+                .selectAll(".node")
                 .attr("cx", (d) => newX((d as NodeType).Sepal_Length))
                 .attr("cy", (d) => newY((d as NodeType).Petal_Length));
-            }) as any
+            }) as never
         );
     }
   }, [padding]);
