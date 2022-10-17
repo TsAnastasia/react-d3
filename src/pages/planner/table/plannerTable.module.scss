@@ -1,0 +1,26 @@
+.head {
+  display: grid;
+  grid-template-columns: 300px 100px 100px;
+
+  > * {
+    padding: 0 4px;
+
+    display: flex;
+    align-items: center;
+
+    border: 0.5px solid #000;
+  }
+}
+
+.table {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  overflow-y: auto;
+}

@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { AppRoutes } from "./routers";
 
 const AppOutlet = lazy(() => import("../components/outlets/app/AppOutlet"));
-const MainPage = lazy(() => import("../pages/main/MainPage"));
+// const MainPage = lazy(() => import("../pages/main/MainPage"));
 const TreePage = lazy(() => import("../pages/tree/TreePage"));
 const TimelinePage = lazy(() => import("../pages/timeline/TimelinePage"));
 const TutorialPage = lazy(() => import("../pages/tutorial/TutorialPage"));
@@ -13,7 +13,7 @@ const PlannerPage = lazy(() => import("../pages/planner/PlannerPage"));
 const AppRouter = () => (
   <Routes>
     <Route path={AppRoutes.MAIN} element={<AppOutlet />}>
-      <Route index element={<MainPage />} />
+      <Route index element={<PlannerPage />} />
       <Route path={AppRoutes.TREE} element={<TreePage />} />
       <Route path={AppRoutes.TIMELINE} element={<TimelinePage />} />
       <Route path={AppRoutes.TUTORIAL} element={<TutorialPage />} />

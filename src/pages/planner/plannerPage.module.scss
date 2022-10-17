@@ -1,0 +1,33 @@
+.planner {
+  min-height: 100px;
+  max-height: 250px;
+  padding: 4px;
+
+  box-shadow: 0 0 4px #c4c4c4;
+  border-radius: 4px;
+
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 500px 1fr;
+
+  overflow: auto;
+
+  // > * {
+  //   border: 1px solid #000;
+  // }
+}
+
+.root {
+  ::-webkit-scrollbar {
+    width: 4px; /* ширина scrollbar */
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #a6acb0; /* цвет дорожки */
+    border-radius: 6px; /* закругления плашки */
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #282b33; /* цвет плашки */
+    border-radius: 6px; /* закругления плашки */
+  }
+}
