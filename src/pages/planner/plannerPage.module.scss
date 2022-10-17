@@ -8,26 +8,28 @@
 
   display: grid;
   gap: 10px;
-  grid-template-columns: 500px 1fr;
+  grid-template-columns: 500px calc(100% - 510px);
 
   overflow: auto;
-
-  // > * {
-  //   border: 1px solid #000;
-  // }
 }
 
 .root {
   ::-webkit-scrollbar {
-    width: 4px; /* ширина scrollbar */
+    width: 4px;
     height: 4px;
   }
   ::-webkit-scrollbar-track {
-    background: #a6acb0; /* цвет дорожки */
-    border-radius: 6px; /* закругления плашки */
+    background: #a6acb0;
+    border-radius: 6px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: #282b33; /* цвет плашки */
-    border-radius: 6px; /* закругления плашки */
+    background-color: #282b33;
+    border-radius: 6px;
+  }
+}
+
+.gantt {
+  svg {
+    border: 1px solid black;
   }
 }

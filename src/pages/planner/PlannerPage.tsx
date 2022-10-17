@@ -5,6 +5,7 @@ import { formatPlannerData } from "./libs/utils";
 import PlannerTable from "./table/PlannerTable";
 
 import scss from "./plannerPage.module.scss";
+import PlannerGantt from "./gantt/PlannerGantt";
 
 const PlannerPage = () => {
   const [tasks, setTasks] = useState<IPlannerTask[]>([]);
@@ -25,7 +26,7 @@ const PlannerPage = () => {
       <h1>Планировщик</h1>
       <div className={scss.planner}>
         <PlannerTable tasks={tasks} />
-        <div>gannt</div>
+        <PlannerGantt tasks={tasks} className={scss.gantt} />
       </div>
     </main>
   );
