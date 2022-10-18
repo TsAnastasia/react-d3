@@ -1,0 +1,17 @@
+.head {
+  min-height: 30px;
+
+  display: grid;
+  grid-template-columns: 1fr 500px;
+}
+
+.content {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}

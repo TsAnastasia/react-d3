@@ -13,21 +13,6 @@
   overflow: auto;
 }
 
-.root {
-  ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #a6acb0;
-    border-radius: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #282b33;
-    border-radius: 6px;
-  }
-}
-
 .gantt {
   > div {
     box-sizing: border-box;

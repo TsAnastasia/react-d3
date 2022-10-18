@@ -23,7 +23,7 @@ const Planner1 = () => {
   }, []);
 
   return (
-    <section className={scss.root}>
+    <section>
       <h1>Планировщик 1</h1>
       <div className={scss.planner}>
         <PlannerTable tasks={tasks} onUpdate={onUpdateTask} />
