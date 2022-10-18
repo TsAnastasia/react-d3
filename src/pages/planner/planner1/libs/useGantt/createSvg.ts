@@ -1,8 +1,8 @@
 import * as d3 from "d3";
 import { HEAD_HEIGHT } from "../constants";
-import { ClassesEnum, CreateSvg } from "./types";
+import { ClassesEnum, CreateSvgType } from "./types";
 
-export const createSvgFunc: CreateSvg = ({ container, name = "gantt" }) => {
+export const createSvgFunc: CreateSvgType = ({ container, name = "gantt" }) => {
   const svg = d3
     .select(container)
     .append("div")

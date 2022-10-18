@@ -1,11 +1,14 @@
 import * as d3 from "d3";
 import { useCallback, useRef } from "react";
+import { IPlannerTask } from "../types";
 import { createSvgFunc } from "./createSvg";
+import { layoutTasksFunc } from "./layoutTasks";
 import { redrawContentFunc } from "./redrawContent";
 import {
-  CreateSvg,
+  ClassesEnum,
+  CreateSvgType,
   IRef,
-  RedrawContent,
+  RedrawContentType,
   SVGType,
   TimeScaleType,
 } from "./types";
@@ -15,7 +18,7 @@ export const useGantt = () => {
     scale: d3.scaleTime(),
   });
 
-  const createSvg = useCallback<CreateSvg>((props) => {
+  const createSvg = useCallback<CreateSvgType>((props) => {
     const svg = createSvgFunc(props);
     ref.current.svg = svg;
     return svg;
@@ -25,7 +28,19 @@ export const useGantt = () => {
     ref.current.scale = scale;
   }, []);
 
-  const redrawContent = useCallback<RedrawContent>(
+  const redrawTask = useCallback((task: IPlannerTask) => {
+    console.log("redrawTask", task);
+    const gTask = ref.current.svg
+      .selectAll<SVGGElement, IPlannerTask>(`.${ClassesEnum.TASKS} g`)
+      .filter((t) => t.id === task.id);
+
+    layoutTasksFunc({
+      gTask: gTask,
+      scale: ref.current.scale,
+    });
+  }, []);
+
+  const redrawContent = useCallback<RedrawContentType>(
     (props) => {
       const { scale, clean } = redrawContentFunc({
         ...props,
@@ -41,5 +56,6 @@ export const useGantt = () => {
   return {
     createSvg,
     redrawContent,
+    redrawTask,
   };
 };

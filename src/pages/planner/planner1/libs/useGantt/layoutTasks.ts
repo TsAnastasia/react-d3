@@ -12,5 +12,10 @@ export const layoutTasksFunc: (props: {
   // gTask
   //   .select("." + ClassesEnum.TASK_FINISH)
   //   .attr("x", (t) => xScale(t.finish) - TASK_EDGE_WIDTH);
-  gTask.select("text").attr("x", (t) => scale(t.finish) + 2);
+  gTask
+    .select("text")
+    .attr("x", (t) => scale(t.finish) + 2)
+    .text((t) => t.name);
+
+  // gTask.select("text");
 };

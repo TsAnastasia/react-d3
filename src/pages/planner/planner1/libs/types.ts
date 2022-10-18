@@ -23,7 +23,7 @@ export interface IData {
 }
 
 export interface IDataTask
-  extends Omit<IPlannerTask, "start" | "finish" | "height"> {
+  extends Omit<IPlannerTask, "start" | "finish" | "top"> {
   start: string;
   finish: string;
 }

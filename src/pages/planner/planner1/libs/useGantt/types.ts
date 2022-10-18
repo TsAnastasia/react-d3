@@ -28,12 +28,12 @@ export enum ClassesEnum {
   TASK_FINISH = "task-finish",
 }
 
-export type CreateSvg = (props: {
+export type CreateSvgType = (props: {
   container: HTMLDivElement;
   name?: string;
 }) => SVGType;
 
-export type RedrawContent = (props: {
+export type RedrawContentType = (props: {
   width: number;
   height: number;
   tasks: IPlannerTask[];

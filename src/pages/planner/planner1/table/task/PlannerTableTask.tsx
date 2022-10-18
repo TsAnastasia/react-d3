@@ -20,26 +20,15 @@ const PlannerTableTask: FC<{
   const [current, setCurrent] = useState(task);
   const ref = useRef<HTMLLIElement>(null);
 
-  const handleChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      if (event.target.type === "date") {
-        // task[event.target.name as "start" | "finish"] = new Date(
-        //   event.target.value
-        // );
-        // setCurrent((state) => ({
-        //   ...state,
-        //   [event.target.name]: new Date(event.target.value),
-        // }));
-        // TODO: format value
-        onUpdate({
-          ...task,
-          [event.target.name]: new Date(event.target.value),
-        });
-        // console.log("new date", new Date(event.target.value));
-      }
-    },
-    [onUpdate, task]
-  );
+  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    setCurrent((state) => ({
+      ...state,
+      [event.target.name]:
+        event.target.type === "date"
+          ? new Date(event.target.value)
+          : event.target.value,
+    }));
+  }, []);
 
   useEffect(() => {
     setCurrent(task);
@@ -50,21 +39,34 @@ const PlannerTableTask: FC<{
     task.top = (ref.current?.offsetTop || 0) - offsetTop;
   }, [offsetTop, task]);
 
+  useEffect(() => {
+    task.start = current.start;
+    task.finish = current.finish;
+    task.name = current.name;
+    onUpdate(current);
+  }, [current, onUpdate, task]);
+
   return (
     <li className={scss.root} ref={ref} style={{ height: TASK_LINE_HEIGHT }}>
-      <input type="text" name="name" value={task.name} disabled={true} />
+      <input
+        type="text"
+        name="name"
+        value={current.name}
+        onChange={handleChange}
+      />
       <input
         type="date"
         name="start"
         value={formatDateForInput(current.start)}
         onChange={handleChange}
-        // disabled={true}
+        max={formatDateForInput(current.finish)}
       />
       <input
         type="date"
         name="finish"
-        value={formatDateForInput(task.finish)}
-        disabled={true}
+        value={formatDateForInput(current.finish)}
+        onChange={handleChange}
+        min={formatDateForInput(current.start)}
       />
     </li>
   );

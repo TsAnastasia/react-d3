@@ -1,14 +1,16 @@
 import { FC, useEffect, useRef } from "react";
 import { IPlannerTask } from "../libs/types";
-import { useGantt } from "../libs/useGantt/useGantt";
+import { CreateSvgType, RedrawContentType } from "../libs/useGantt/types";
 
-const PlannerGantt: FC<{ tasks: IPlannerTask[]; className?: string }> = ({
-  className,
-  tasks,
-}) => {
+const PlannerGantt: FC<{
+  tasks: IPlannerTask[];
+  className?: string;
+  createSvg: CreateSvgType;
+  redrawContent: RedrawContentType;
+}> = ({ className, tasks, createSvg, redrawContent }) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const { createSvg, redrawContent } = useGantt();
+  // const { createSvg, redrawContent } = useGantt();
 
   useEffect(() => {
     if (ref.current) {

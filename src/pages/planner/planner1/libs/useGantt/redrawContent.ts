@@ -5,14 +5,19 @@ import { IPlannerTask } from "../types";
 import { fotmatTimeScaleTick } from "../utils";
 import { createTaksFunc } from "./createTasks";
 import { layoutTasksFunc } from "./layoutTasks";
-import { ClassesEnum, RedrawContent, SVGType, TimeScaleType } from "./types";
+import {
+  ClassesEnum,
+  RedrawContentType,
+  SVGType,
+  TimeScaleType,
+} from "./types";
 
 export const redrawContentFunc: (
-  props: Parameters<RedrawContent>[0] & {
+  props: Parameters<RedrawContentType>[0] & {
     svg: SVGType;
     updateScale: (scale: TimeScaleType) => void;
   }
-) => ReturnType<RedrawContent> & { scale: TimeScaleType } = ({
+) => ReturnType<RedrawContentType> & { scale: TimeScaleType } = ({
   width,
   height,
   tasks,

@@ -29,7 +29,7 @@ export const createTaksFunc: (props: {
     .attr("font-size", 11)
     .attr("font-family", "Roboto")
     .attr("font-weight", 300)
-    .text((d) => d.name)
+    // .text((d) => d.name)
     .attr("y", (t) => t.top + 19);
 
   return { gTask };
