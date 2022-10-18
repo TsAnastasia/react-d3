@@ -1,18 +1,3 @@
-.planner {
-  min-height: 100px;
-  max-height: 250px;
-  padding: 0 4px;
-
-  box-shadow: 0 0 4px #c4c4c4;
-  border-radius: 4px;
-
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 500px calc(100% - 510px);
-
-  overflow: auto;
-}
-
 .root {
   ::-webkit-scrollbar {
     width: 4px;
@@ -25,16 +10,5 @@
   ::-webkit-scrollbar-thumb {
     background-color: #282b33;
     border-radius: 6px;
-  }
-}
-
-.gantt {
-  > div {
-    box-sizing: border-box;
-    border: 1px solid black;
-  }
-
-  svg {
-    display: block;
   }
 }

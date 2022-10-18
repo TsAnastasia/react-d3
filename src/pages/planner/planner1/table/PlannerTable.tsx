@@ -5,7 +5,10 @@ import { IPlannerTask } from "../libs/types";
 import scss from "./plannerTable.module.scss";
 import PlannerTableTask from "./task/PlannerTableTask";
 
-const PlannerTable: FC<{ tasks: IPlannerTask[] }> = ({ tasks }) => {
+const PlannerTable: FC<{
+  tasks: IPlannerTask[];
+  onUpdate: (task: IPlannerTask) => void;
+}> = ({ tasks, onUpdate }) => {
   const tableRef = useRef<HTMLUListElement>(null);
 
   return (
@@ -21,6 +24,7 @@ const PlannerTable: FC<{ tasks: IPlannerTask[] }> = ({ tasks }) => {
             key={task.id}
             task={task}
             offsetTop={tableRef.current?.offsetTop || 0}
+            onUpdate={onUpdate}
           />
         ))}
       </ul>

@@ -1,5 +1,7 @@
 declare namespace PlannerPageModuleScssNamespace {
   export interface IPlannerPageModuleScss {
+    gantt: string;
+    planner: string;
     root: string;
   }
 }
