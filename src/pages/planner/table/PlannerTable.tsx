@@ -6,25 +6,21 @@ import scss from "./plannerTable.module.scss";
 import PlannerTableTask from "./task/PlannerTableTask";
 
 const PlannerTable: FC<{ tasks: IPlannerTask[] }> = ({ tasks }) => {
-  const headRef = useRef<HTMLDivElement>(null);
+  const tableRef = useRef<HTMLUListElement>(null);
 
   return (
-    <div>
-      <div className={scss.head} style={{ height: HEAD_HEIGHT }} ref={headRef}>
+    <div className={scss.root}>
+      <div className={scss.head} style={{ height: HEAD_HEIGHT }}>
         <p>Имя задачи</p>
         <p>Начало</p>
         <p>Окончание</p>
       </div>
-      <ul className={scss.table}>
+      <ul className={scss.table} ref={tableRef}>
         {tasks.map((task) => (
           <PlannerTableTask
             key={task.id}
             task={task}
-            offsetTop={
-              headRef.current
-                ? headRef.current.offsetTop + headRef.current.offsetHeight
-                : 0
-            }
+            offsetTop={tableRef.current?.offsetTop || 0}
           />
         ))}
       </ul>

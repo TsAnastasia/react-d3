@@ -1,6 +1,16 @@
+.root {
+  position: relative;
+}
+
 .head {
+  background-color: #ffffff;
+
   display: grid;
   grid-template-columns: 300px 100px 100px;
+
+  // TODO: style
+  // position: sticky;
+  top: 0;
 
   > * {
     padding: 0 4px;
