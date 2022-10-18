@@ -4,6 +4,7 @@ export interface IPlannerTask {
   start: Date;
   finish: Date;
   group: string;
+  top: number;
 }
 
 export interface IPlannerLink {
@@ -21,7 +22,8 @@ export interface IData {
   links: IDataLink[];
 }
 
-export interface IDataTask extends Omit<IPlannerTask, "start" | "finish"> {
+export interface IDataTask
+  extends Omit<IPlannerTask, "start" | "finish" | "height"> {
   start: string;
   finish: string;
 }

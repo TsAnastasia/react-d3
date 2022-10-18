@@ -10,6 +10,7 @@ export const formatPlannerData: (data: IData) => {
     ...item,
     start: new Date(item.start),
     finish: new Date(item.finish),
+    height: 10,
   }));
 
   const plannerLinks: IPlannerLink[] = [];
@@ -25,3 +26,34 @@ export const formatPlannerData: (data: IData) => {
 
 export const formatDateForInput = (date: Date) =>
   Intl.DateTimeFormat("ru").format(date).split(".").reverse().join("-");
+
+const MONTHS = [
+  "янв",
+  "фев",
+  "мар",
+  "апр",
+  "май",
+  "июн",
+  "июл",
+  "авг",
+  "сен",
+  "окт",
+  "ноя",
+  "дек",
+];
+
+export const fotmatTimeScaleTick: (
+  date: Date,
+  scaleTimeFormat?: "day" | "month" | "year"
+) => string = (date, scaleTimeFormat = "day") => {
+  switch (scaleTimeFormat) {
+    case "year":
+      return `${date.getFullYear()}`;
+    case "month":
+      return `${MONTHS[date.getMonth()]}`;
+    case "day":
+      return `${date.getDate()} ${MONTHS[date.getMonth()]}`;
+    default:
+      return "";
+  }
+};

@@ -8,7 +8,7 @@ const PlannerGantt: FC<{ tasks: IPlannerTask[]; className?: string }> = ({
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const { createSvg, redrawTasks } = useGantt();
+  const { createSvg, redrawContent } = useGantt();
 
   useEffect(() => {
     if (ref.current) {
@@ -19,11 +19,15 @@ const PlannerGantt: FC<{ tasks: IPlannerTask[]; className?: string }> = ({
   }, [createSvg]);
 
   useEffect(() => {
-    redrawTasks({
-      width: ref.current?.clientWidth || 100,
-      tasks,
-    });
-  }, [redrawTasks, tasks]);
+    if (ref.current) {
+      const { width, height } = ref.current.getBoundingClientRect();
+      redrawContent({
+        width,
+        height,
+        tasks,
+      });
+    }
+  }, [redrawContent, tasks]);
 
   return <div ref={ref} className={className} />;
 };
