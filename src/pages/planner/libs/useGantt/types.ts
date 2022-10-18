@@ -1,10 +1,11 @@
+import { BaseType } from "d3";
 import { IPlannerTask } from "../types";
 
-export type SVGType = d3.Selection<SVGSVGElement, unknown, null, undefined>;
+export type SVGType = d3.Selection<HTMLDivElement, unknown, null, undefined>;
 export type GTaskType = d3.Selection<
   SVGGElement,
   IPlannerTask,
-  SVGGElement,
+  BaseType,
   unknown
 >;
 export type TimeScaleType = d3.ScaleTime<number, number, never>;

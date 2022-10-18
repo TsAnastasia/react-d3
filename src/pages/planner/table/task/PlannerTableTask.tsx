@@ -13,6 +13,7 @@ const PlannerTableTask: FC<{ task: IPlannerTask; offsetTop: number }> = ({
 
   // CHECK: update task top
   useEffect(() => {
+    console.log(ref.current?.offsetTop, offsetTop);
     task.top = (ref.current?.offsetTop || 0) - offsetTop;
   }, [offsetTop, task]);
 

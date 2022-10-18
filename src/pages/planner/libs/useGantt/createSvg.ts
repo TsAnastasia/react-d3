@@ -3,17 +3,27 @@ import { HEAD_HEIGHT } from "../constants";
 import { ClassesEnum, CreateSvg } from "./types";
 
 export const createSvgFunc: CreateSvg = ({ container, name = "gantt" }) => {
-  const svg = d3.select(container).append("svg").attr("id", name);
+  const svg = d3
+    .select(container)
+    .append("div")
+    .attr("id", name)
+    .style("position", "relative");
 
   svg
+    .append("svg")
+    .attr("height", HEAD_HEIGHT)
+    .style("width", "100%")
+    .style("position", "sticky")
+    .style("top", 0)
+    .style("background", "#ffffff")
     .append("g")
     .attr("class", ClassesEnum.XSCALE)
     .attr("transform", `translate(0,${HEAD_HEIGHT})`);
 
   const content = svg
-    .append("g")
-    .attr("class", ClassesEnum.CONTENT)
-    .attr("transform", `translate(0,${HEAD_HEIGHT})`);
+    .append("svg")
+    .style("width", "100%")
+    .attr("class", ClassesEnum.CONTENT);
   content.append("g").attr("class", ClassesEnum.GRID);
   content.append("g").attr("class", ClassesEnum.TASKS);
 

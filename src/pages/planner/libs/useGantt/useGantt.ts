@@ -11,7 +11,7 @@ import {
 } from "./types";
 export const useGantt = () => {
   const ref = useRef<IRef>({
-    svg: d3.create("svg") as SVGType,
+    svg: d3.create("div") as SVGType,
     scale: d3.scaleTime(),
   });
 

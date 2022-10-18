@@ -15,8 +15,12 @@ export const redrawContentFunc: (
 ) => { scale: TimeScaleType } =
   // & ReturnType<RedrawTasks>
   ({ width, height, tasks, svg, updateScale }) => {
-    svg.attr("width", width).attr("height", height);
+    svg.attr("width", width);
+
     const gHeight = height - HEAD_HEIGHT;
+
+    const content = svg.select<Element>("." + ClassesEnum.CONTENT);
+    content.attr("height", gHeight);
 
     // create time scale
     const auxScale = d3
@@ -63,7 +67,6 @@ export const redrawContentFunc: (
     layoutTasksFunc({ gTask, scale });
 
     // creay=te zoom
-    const content = svg.select<Element>("." + ClassesEnum.CONTENT);
     content
       .append("rect")
       .attr("width", width)
@@ -81,8 +84,10 @@ export const redrawContentFunc: (
         [-Infinity, 0],
         [Infinity, gHeight],
       ])
-      .scaleExtent([1, Infinity])
+      // .scaleExtent([1, Infinity])
       .on("zoom", (event) => {
+        if (event.transform.k < 1) event.transform.k = 1;
+
         const newX = event.transform.rescaleX(scale);
         updateScale(newX);
         svg
