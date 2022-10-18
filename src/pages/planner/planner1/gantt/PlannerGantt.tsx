@@ -20,12 +20,17 @@ const PlannerGantt: FC<{ tasks: IPlannerTask[]; className?: string }> = ({
 
   useEffect(() => {
     if (ref.current) {
+      console.log("draw");
       const { width, height } = ref.current.getBoundingClientRect();
-      redrawContent({
+      const { clean } = redrawContent({
         width,
         height,
         tasks,
       });
+      return () => {
+        console.log("end");
+        clean();
+      };
     }
   }, [redrawContent, tasks]);
 

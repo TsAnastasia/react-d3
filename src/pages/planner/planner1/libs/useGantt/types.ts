@@ -19,6 +19,7 @@ export enum ClassesEnum {
   XSCALE = "x-scale",
   CONTENT = "content",
   GRID = "grid",
+  ZOOM = "zoom",
 
   TASKS = "tasks",
   TASK = "task-rect",
@@ -36,4 +37,4 @@ export type RedrawContent = (props: {
   width: number;
   height: number;
   tasks: IPlannerTask[];
-}) => void;
+}) => { clean: () => void };

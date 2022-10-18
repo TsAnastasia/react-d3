@@ -27,12 +27,13 @@ export const useGantt = () => {
 
   const redrawContent = useCallback<RedrawContent>(
     (props) => {
-      const { scale } = redrawContentFunc({
+      const { scale, clean } = redrawContentFunc({
         ...props,
         svg: ref.current.svg,
         updateScale: _updateScale,
       });
       _updateScale(scale);
+      return { clean };
     },
     [_updateScale]
   );
