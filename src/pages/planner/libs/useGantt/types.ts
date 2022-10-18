@@ -1,6 +1,12 @@
 import { IPlannerTask } from "../types";
 
 export type SVGType = d3.Selection<SVGSVGElement, unknown, null, undefined>;
+export type GTaskType = d3.Selection<
+  SVGGElement,
+  IPlannerTask,
+  SVGGElement,
+  unknown
+>;
 export type TimeScaleType = d3.ScaleTime<number, number, never>;
 
 export interface IRef {
@@ -12,7 +18,12 @@ export enum ClassesEnum {
   XSCALE = "x-scale",
   CONTENT = "content",
   GRID = "grid",
+
   TASKS = "tasks",
+  TASK = "task-rect",
+  TASK_EDGE = "task-edge",
+  TASK_START = "task-start",
+  TASK_FINISH = "task-finish",
 }
 
 export type CreateSvg = (props: {

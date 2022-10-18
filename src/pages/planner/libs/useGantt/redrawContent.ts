@@ -1,7 +1,10 @@
 import * as d3 from "d3";
 
 import { GRID_COLOR, GRID_LINE_WIDTH, HEAD_HEIGHT } from "../constants";
+import { IPlannerTask } from "../types";
 import { fotmatTimeScaleTick } from "../utils";
+import { createTaksFunc } from "./createTasks";
+import { layoutTasksFunc } from "./layoutTasks";
 import { ClassesEnum, RedrawContent, SVGType, TimeScaleType } from "./types";
 
 export const redrawContentFunc: (
@@ -52,6 +55,13 @@ export const redrawContentFunc: (
     // layout grid
     gGrid.attr("y1", (t) => t.top).attr("y2", (t) => t.top);
 
+    const { gTask } = createTaksFunc({
+      svg,
+      tasks,
+    });
+    // layout task
+    layoutTasksFunc({ gTask, scale });
+
     // creay=te zoom
     const content = svg.select<Element>("." + ClassesEnum.CONTENT);
     content
@@ -82,6 +92,13 @@ export const redrawContentFunc: (
               .axisTop(newX)
               .tickFormat((d) => fotmatTimeScaleTick(d as Date, "day"))
           );
+
+        layoutTasksFunc({
+          gTask: svg.selectAll<SVGGElement, IPlannerTask>(
+            `.${ClassesEnum.TASKS} g`
+          ),
+          scale: newX,
+        });
       });
 
     content.call(zoom);
