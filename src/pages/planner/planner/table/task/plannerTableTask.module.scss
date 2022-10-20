@@ -1,17 +1,6 @@
-.row {
+.root {
   display: grid;
-  gap: 4px;
+  // gap: 4px;
   grid-auto-flow: column;
-  grid-template-columns: 20px 1fr;
-}
-
-.details {
-  margin: 0;
-  padding: 0;
-
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
+  grid-template-columns: 60px 200px 120px 120px 50px;
 }

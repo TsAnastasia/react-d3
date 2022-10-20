@@ -7,4 +7,18 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+
+  position: relative;
+
+  &::before {
+    content: "";
+    height: 100%;
+    width: 2px;
+
+    background-color: black;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }

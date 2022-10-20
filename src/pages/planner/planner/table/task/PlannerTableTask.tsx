@@ -3,11 +3,21 @@ import { formatDateForInput } from "../../../libs/utils";
 import { IPlannerTask } from "../../libs/interfaces";
 import scss from "./plannerTableTask.module.scss";
 
-const PlannerTableTask: FC<{ task: IPlannerTask; level?: number }> = ({
-  task,
-}) => {
+const PlannerTableTask: FC<{
+  task: IPlannerTask;
+  level: number;
+  open?: boolean;
+  onToggleOpen?: () => void;
+}> = ({ task, level, open, onToggleOpen }) => {
   return (
-    <div className={scss.row}>
+    <div className={scss.root}>
+      <div style={{ paddingLeft: (level - 1) * 18 }}>
+        {onToggleOpen && (
+          <button type="button" onClick={onToggleOpen}>
+            {open ? "-" : "+"}
+          </button>
+        )}
+      </div>
       <input
         type="text"
         name="name"
