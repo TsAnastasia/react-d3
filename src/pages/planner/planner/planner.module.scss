@@ -1,0 +1,26 @@
+.root {
+  margin: 10px auto;
+}
+
+.title {
+  margin: 0 0 10px;
+
+  font-family: "Roboto";
+  font-weight: 500;
+  font-style: normal;
+  font-size: 28px;
+  line-height: 120%;
+}
+
+.planner {
+  min-height: 100px;
+  max-height: 400px;
+
+  box-shadow: 0 0 4px #c4c4c4;
+  border-radius: 4px;
+
+  display: grid;
+  grid-template-columns: 1fr 400px;
+
+  overflow: auto;
+}

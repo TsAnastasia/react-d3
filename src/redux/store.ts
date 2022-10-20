@@ -14,11 +14,13 @@ import storage from "redux-persist/lib/storage/session";
 // import storage from "redux-persist/lib/storage";
 
 import { exampleSlice } from "./example/exampleSlice";
+import { plannerSlice } from "./planner/plannerSlice";
 
 // import { usersAPI } from "../allData/API/users/usersAPI";
 
 const rootReducer = combineReducers({
   [exampleSlice.name]: exampleSlice.reducer,
+  [plannerSlice.name]: plannerSlice.reducer,
   //   [usersAPI.reducerPath]: usersAPI.reducer,
 });
 

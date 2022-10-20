@@ -29,7 +29,7 @@ export const useGantt = () => {
   }, []);
 
   const redrawTask = useCallback((task: IPlannerTask) => {
-    console.log("redrawTask", task);
+    // console.log("redrawTask", task);
     const gTask = ref.current.svg
       .selectAll<SVGGElement, IPlannerTask>(`.${ClassesEnum.TASKS} g`)
       .filter((t) => t.id === task.id);

@@ -96,7 +96,7 @@ export const redrawContentFunc: (
     ])
     // .scaleExtent([1, Infinity])
     .on("zoom", (event) => {
-      console.log(event.transform);
+      // console.log(event.transform);
       if (event.transform.k < 1) event.transform.k = 1;
 
       const newX = event.transform.rescaleX(scale);

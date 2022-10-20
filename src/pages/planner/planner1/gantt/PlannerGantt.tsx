@@ -22,7 +22,7 @@ const PlannerGantt: FC<{
 
   useEffect(() => {
     if (ref.current) {
-      console.log("draw");
+      // console.log("draw");
       const { width, height } = ref.current.getBoundingClientRect();
       const { clean } = redrawContent({
         width,
@@ -30,7 +30,7 @@ const PlannerGantt: FC<{
         tasks,
       });
       return () => {
-        console.log("end");
+        // console.log("end");
         clean();
       };
     }
