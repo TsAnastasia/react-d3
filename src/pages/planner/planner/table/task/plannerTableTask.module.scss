@@ -3,4 +3,36 @@
   // gap: 4px;
   grid-auto-flow: column;
   grid-template-columns: 60px 200px 120px 120px 50px;
+
+  position: relative;
+}
+
+.open {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+
+  .line {
+    height: 1px;
+    width: 20px;
+
+    background-color: lime;
+
+    align-self: center;
+
+    &::before {
+      content: "";
+      width: 1px;
+      height: 100%;
+
+      background-color: lime;
+
+      position: absolute;
+      top: -50%;
+    }
+  }
+
+  .btn {
+    width: 20px;
+  }
 }

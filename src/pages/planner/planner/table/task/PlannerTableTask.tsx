@@ -27,10 +27,11 @@ const PlannerTableTask: FC<{
   );
 
   return (
-    <div className={scss.root}>
-      <div style={{ paddingLeft: (level - 1) * 18 }}>
+    <div className={scss.root} style={{ height: 30 }}>
+      <div style={{ paddingLeft: (level - 1) * 20 }} className={scss.open}>
+        {!!level && <div className={scss.line} />}
         {onToggleOpen && (
-          <button type="button" onClick={onToggleOpen}>
+          <button type="button" onClick={onToggleOpen} className={scss.btn}>
             {open ? "-" : "+"}
           </button>
         )}

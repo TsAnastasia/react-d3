@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import { useAppSelector } from "../../../../../hooks/redux";
 import { formatTaskGrouptoTask } from "../../libs/formatData";
 import { IPlannerTaskGroup } from "../../libs/interfaces";
@@ -17,10 +17,6 @@ const PlannerTableDetails: FC<{
     setOpen((state) => !state);
   }, []);
 
-  useEffect(() => {
-    console.log("use effect tasks");
-  }, [tasks]);
-
   return (
     <>
       <div>
@@ -28,7 +24,7 @@ const PlannerTableDetails: FC<{
           task={formatTaskGrouptoTask(group, tasks)}
           open={open}
           onToggleOpen={handleOpenToggle}
-          level={level + 1}
+          level={level}
           isGroup={true}
         />
       </div>
