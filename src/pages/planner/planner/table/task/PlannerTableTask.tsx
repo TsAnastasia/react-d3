@@ -1,6 +1,9 @@
 import { ChangeEvent, FC, memo, useCallback } from "react";
 import { useAppDispatch } from "../../../../../hooks/redux";
-import { updateTaskEdges } from "../../../../../redux/planner/plannerSlice";
+import {
+  updateTaskEdges,
+  updateTaskResFact,
+} from "../../../../../redux/planner/plannerSlice";
 import { formatDateForInput } from "../../../libs/utils";
 import { IPlannerTask } from "../../libs/interfaces";
 import scss from "./plannerTableTask.module.scss";
@@ -20,6 +23,18 @@ const PlannerTableTask: FC<{
           taskId: task.activity_id,
           type: event.target.name as "start" | "finish",
           value: new Date(event.target.value).toISOString(),
+        })
+      );
+    },
+    [dispatch, task]
+  );
+
+  const handleChangeResFact = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      dispatch(
+        updateTaskResFact({
+          taskId: task.activity_id,
+          value: Number(event.target.value),
         })
       );
     },
@@ -63,8 +78,8 @@ const PlannerTableTask: FC<{
         type="number"
         name="electrician"
         value={task.res_fact.electrician}
-        // onChange={handleChangeRes}
-        disabled={true}
+        onChange={handleChangeResFact}
+        disabled={isGroup}
       />
     </div>
   );

@@ -32,9 +32,17 @@ export const plannerSlice = createSlice({
       const { type, value, taskId } = action.payload;
       state.tasks[taskId][type] = value;
     },
+    updateTaskResFact: (
+      state,
+      action: PayloadAction<{ taskId: TaskIdType; value: number }>
+    ) => {
+      const { value, taskId } = action.payload;
+      state.tasks[taskId].res_fact.electrician = value;
+    },
   },
 });
 
-export const { resetState, setData, updateTaskEdges } = plannerSlice.actions;
+export const { resetState, setData, updateTaskEdges, updateTaskResFact } =
+  plannerSlice.actions;
 
 export default plannerSlice.reducer;
