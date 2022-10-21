@@ -1,5 +1,7 @@
+export type TaskIdType = number | string;
+
 interface IDataTaskBase {
-  activity_id: number | string;
+  activity_id: TaskIdType;
   activity_name: string;
 }
 

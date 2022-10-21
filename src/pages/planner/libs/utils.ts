@@ -1,2 +1,6 @@
-export const formatDateForInput = (date: Date) =>
-  Intl.DateTimeFormat("ru").format(date).split(".").reverse().join("-");
+export const formatDateForInput = (dateStr: string) =>
+  Intl.DateTimeFormat("ru")
+    .format(new Date(dateStr))
+    .split(".")
+    .reverse()
+    .join("-");

@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { useAppSelector } from "../../../../../hooks/redux";
 import { formatTaskGrouptoTask } from "../../libs/formatData";
 import { IPlannerTaskGroup } from "../../libs/interfaces";
@@ -17,6 +17,10 @@ const PlannerTableDetails: FC<{
     setOpen((state) => !state);
   }, []);
 
+  useEffect(() => {
+    console.log("use effect tasks");
+  }, [tasks]);
+
   return (
     <>
       <div>
@@ -25,19 +29,22 @@ const PlannerTableDetails: FC<{
           open={open}
           onToggleOpen={handleOpenToggle}
           level={level + 1}
+          isGroup={true}
         />
       </div>
       {open && (
         <ul className={scss.details}>
-          {group.details.map((item) => (
-            <li key={item.activity_id}>
-              {item.type === "group" ? (
+          {group.details.map((item) =>
+            typeof item === "string" || typeof item === "number" ? (
+              <li key={item}>
+                <PlannerTableTask task={tasks[item]} level={level + 1} />
+              </li>
+            ) : (
+              <li key={item.activity_id}>
                 <PlannerTableDetails group={item} level={level + 1} />
-              ) : (
-                <PlannerTableTask task={item} level={level + 1} />
-              )}
-            </li>
-          ))}
+              </li>
+            )
+          )}
         </ul>
       )}
     </>

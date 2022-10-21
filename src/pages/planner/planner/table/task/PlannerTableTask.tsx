@@ -1,4 +1,6 @@
-import { FC } from "react";
+import { ChangeEvent, FC, memo, useCallback } from "react";
+import { useAppDispatch } from "../../../../../hooks/redux";
+import { updateTaskEdges } from "../../../../../redux/planner/plannerSlice";
 import { formatDateForInput } from "../../../libs/utils";
 import { IPlannerTask } from "../../libs/interfaces";
 import scss from "./plannerTableTask.module.scss";
@@ -8,7 +10,22 @@ const PlannerTableTask: FC<{
   level: number;
   open?: boolean;
   onToggleOpen?: () => void;
-}> = ({ task, level, open, onToggleOpen }) => {
+  isGroup?: boolean;
+}> = ({ task, level, open, onToggleOpen, isGroup = false }) => {
+  const dispatch = useAppDispatch();
+  const handleChangeEdges = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      dispatch(
+        updateTaskEdges({
+          taskId: task.activity_id,
+          type: event.target.name as "start" | "finish",
+          value: new Date(event.target.value).toISOString(),
+        })
+      );
+    },
+    [dispatch, task]
+  );
+
   return (
     <div className={scss.root}>
       <div style={{ paddingLeft: (level - 1) * 18 }}>
@@ -29,17 +46,17 @@ const PlannerTableTask: FC<{
         type="date"
         name="start"
         value={formatDateForInput(task.start)}
-        // onChange={handleChange}
+        onChange={handleChangeEdges}
         max={formatDateForInput(task.finish)}
-        disabled={true}
+        disabled={isGroup}
       />
       <input
         type="date"
         name="finish"
         value={formatDateForInput(task.finish)}
-        // onChange={handleChange}
+        onChange={handleChangeEdges}
         min={formatDateForInput(task.start)}
-        disabled={true}
+        disabled={isGroup}
       />
       <input
         type="number"
@@ -52,4 +69,4 @@ const PlannerTableTask: FC<{
   );
 };
 
-export default PlannerTableTask;
+export default memo(PlannerTableTask);
