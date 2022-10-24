@@ -1,6 +1,6 @@
 declare namespace PlannerTableModuleScssNamespace {
   export interface IPlannerTableModuleScss {
-    table: string;
+    root: string;
   }
 }
 

@@ -3,11 +3,11 @@ import { IDataTask } from "./interfaces";
 export const TASKS: IDataTask[] = [
   {
     activity_id: 11,
-    activity_name: "1 1",
+    activity_name: "Строительно-монтажные работы",
     details: [
       {
         activity_id: 111,
-        activity_name: "1 1 1",
+        activity_name: "Монтаж свайного основания",
         details: [
           {
             activity_id: 223084,
@@ -34,7 +34,7 @@ export const TASKS: IDataTask[] = [
       },
       {
         activity_id: 112,
-        activity_name: "1 1 2",
+        activity_name: "Монтаж опор порталов",
         details: [
           {
             activity_id: 223087,
@@ -64,11 +64,11 @@ export const TASKS: IDataTask[] = [
   },
   {
     activity_id: 12,
-    activity_name: "1 2",
+    activity_name: "Электро-технические работы",
     details: [
       {
         activity_id: 123,
-        activity_name: "1 2 3",
+        activity_name: "Монтаж проводки",
         details: [
           {
             activity_id: 223093,
@@ -88,7 +88,7 @@ export const TASKS: IDataTask[] = [
       },
       {
         activity_id: 124,
-        activity_name: "1 2 4",
+        activity_name: "Установка заземления",
         details: [
           {
             activity_id: 223094,

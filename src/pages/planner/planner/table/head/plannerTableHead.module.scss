@@ -1,0 +1,18 @@
+.root {
+  background-color: #ffffff;
+
+  display: grid;
+  // gap: 4px;
+  grid-auto-flow: column;
+  grid-template-columns: 300px 100px 100px 80px;
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  p {
+    padding: 2px;
+    box-sizing: border-box;
+    border: 1px solid #000000;
+  }
+}

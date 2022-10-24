@@ -2,6 +2,7 @@ declare namespace PlannerTableTaskModuleScssNamespace {
   export interface IPlannerTableTaskModuleScss {
     btn: string;
     line: string;
+    name: string;
     open: string;
     root: string;
   }

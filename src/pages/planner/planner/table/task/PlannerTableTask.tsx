@@ -43,21 +43,23 @@ const PlannerTableTask: FC<{
 
   return (
     <div className={scss.root} style={{ height: 30 }}>
-      <div style={{ paddingLeft: (level - 1) * 20 }} className={scss.open}>
-        {!!level && <div className={scss.line} />}
-        {onToggleOpen && (
-          <button type="button" onClick={onToggleOpen} className={scss.btn}>
-            {open ? "-" : "+"}
-          </button>
-        )}
+      <div style={{ paddingLeft: (level - 1) * 20 }} className={scss.name}>
+        <div className={scss.open}>
+          {!!level && <div className={scss.line} />}
+          {onToggleOpen && (
+            <button type="button" onClick={onToggleOpen} className={scss.btn}>
+              {open ? "-" : "+"}
+            </button>
+          )}
+        </div>
+        <input
+          type="text"
+          name="name"
+          value={task.activity_name}
+          // onChange={handleChange}
+          disabled={true}
+        />
       </div>
-      <input
-        type="text"
-        name="name"
-        value={task.activity_name}
-        // onChange={handleChange}
-        disabled={true}
-      />
       <input
         type="date"
         name="start"

@@ -7,4 +7,20 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+
+  position: relative;
+}
+
+.line {
+  height: 100%;
+  width: 1px;
+
+  background-color: black;
+
+  position: absolute;
+  top: -15px;
+
+  .item:last-child > .details > & {
+    display: none;
+  }
 }

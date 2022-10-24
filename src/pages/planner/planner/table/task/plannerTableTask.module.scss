@@ -2,7 +2,7 @@
   display: grid;
   // gap: 4px;
   grid-auto-flow: column;
-  grid-template-columns: 60px 200px 100px 100px 50px;
+  grid-template-columns: 300px 100px 100px 80px;
 
   position: relative;
 }
@@ -16,7 +16,7 @@
     height: 1px;
     width: 20px;
 
-    background-color: lime;
+    background-color: black;
 
     align-self: center;
 
@@ -25,7 +25,7 @@
       width: 1px;
       height: 100%;
 
-      background-color: lime;
+      background-color: black;
 
       position: absolute;
       top: -50%;
@@ -34,5 +34,15 @@
 
   .btn {
     width: 20px;
+  }
+}
+
+.name {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+
+  input {
+    flex: 1;
   }
 }

@@ -1,12 +1,6 @@
-.table {
-  margin: 0;
-  padding: 0;
+.root {
+  background-color: transparent;
+  // max-width: 500px;
 
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-
-  overflow: auto;
+  // overflow-x: hidden;
 }

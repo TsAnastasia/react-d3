@@ -30,13 +30,16 @@ const PlannerTableDetails: FC<{
       </div>
       {open && (
         <ul className={scss.details}>
+          {level !== 0 && (
+            <span className={scss.line} style={{ left: (level - 1) * 20 }} />
+          )}
           {group.details.map((item) =>
             typeof item === "string" || typeof item === "number" ? (
               <li key={item}>
                 <PlannerTableTask task={tasks[item]} level={level + 1} />
               </li>
             ) : (
-              <li key={item.activity_id}>
+              <li key={item.activity_id} className={scss.item}>
                 <PlannerTableDetails group={item} level={level + 1} />
               </li>
             )

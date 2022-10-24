@@ -1,6 +1,8 @@
 declare namespace PlannerTableDetailsModuleScssNamespace {
   export interface IPlannerTableDetailsModuleScss {
     details: string;
+    item: string;
+    line: string;
   }
 }
 
