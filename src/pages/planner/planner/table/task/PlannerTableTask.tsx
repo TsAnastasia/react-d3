@@ -1,9 +1,4 @@
-import { ChangeEvent, FC, memo, useCallback } from "react";
-import { useAppDispatch } from "../../../../../hooks/redux";
-import {
-  updateTaskEdges,
-  updateTaskResFact,
-} from "../../../../../redux/planner/plannerSlice";
+import { ChangeEvent, FC, useCallback, useEffect, useState } from "react";
 import { formatDateForInput } from "../../../libs/utils";
 import { IPlannerTask } from "../../libs/interfaces";
 import scss from "./plannerTableTask.module.scss";
@@ -15,31 +10,48 @@ const PlannerTableTask: FC<{
   onToggleOpen?: () => void;
   isGroup?: boolean;
 }> = ({ task, level, open, onToggleOpen, isGroup = false }) => {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
+  const [state, setState] = useState(task);
+
   const handleChangeEdges = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      dispatch(
-        updateTaskEdges({
-          taskId: task.activity_id,
-          type: event.target.name as "start" | "finish",
-          value: new Date(event.target.value).toISOString(),
-        })
-      );
+      setState((state) => {
+        task[event.target.name as "start" | "finish"] = new Date(
+          event.target.value
+        ).toISOString();
+        return {
+          ...state,
+          [event.target.name as "start" | "finish"]: new Date(
+            event.target.value
+          ).toISOString(),
+        };
+      });
+      // dispatch(
+      //   updateTaskEdges({
+      //     taskId: task.activity_id,
+      //     type: event.target.name as "start" | "finish",
+      //     value: new Date(event.target.value).toISOString(),
+      //   })
+      // );
     },
-    [dispatch, task]
+    [task]
   );
 
-  const handleChangeResFact = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      dispatch(
-        updateTaskResFact({
-          taskId: task.activity_id,
-          value: Number(event.target.value),
-        })
-      );
-    },
-    [dispatch, task]
-  );
+  // const handleChangeResFact = useCallback(
+  //   (event: ChangeEvent<HTMLInputElement>) => {
+  //     dispatch(
+  //       updateTaskResFact({
+  //         taskId: task.activity_id,
+  //         value: Number(event.target.value),
+  //       })
+  //     );
+  //   },
+  //   [dispatch, task]
+  // );
+
+  useEffect(() => {
+    console.log("change statet", state);
+  }, [state]);
 
   return (
     <div className={scss.root} style={{ height: 30 }}>
@@ -63,7 +75,7 @@ const PlannerTableTask: FC<{
       <input
         type="date"
         name="start"
-        value={formatDateForInput(task.start)}
+        value={formatDateForInput(state.start)}
         onChange={handleChangeEdges}
         max={formatDateForInput(task.finish)}
         disabled={isGroup}
@@ -80,11 +92,11 @@ const PlannerTableTask: FC<{
         type="number"
         name="electrician"
         value={task.res_fact.electrician}
-        onChange={handleChangeResFact}
-        disabled={isGroup}
+        // onChange={handleChangeResFact}
+        disabled={true}
       />
     </div>
   );
 };
 
-export default memo(PlannerTableTask);
+export default PlannerTableTask;

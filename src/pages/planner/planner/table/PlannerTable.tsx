@@ -1,17 +1,19 @@
 import { FC } from "react";
-import { useAppSelector } from "../../../../hooks/redux";
+import { usePlannerContext } from "../libs/plannerContext";
 import PlannerTableDetails from "./details/PlannerTableDetails";
 import PlannerTableHead from "./head/PlannerTableHead";
 import scss from "./plannerTable.module.scss";
 
 const PlannerTable: FC = () => {
-  const { structure } = useAppSelector((state) => state.planner);
+  const { structure } = usePlannerContext();
 
   return (
-    <div className={scss.root}>
-      <PlannerTableHead />
-      {structure && <PlannerTableDetails group={structure} />}
-    </div>
+    structure && (
+      <div className={scss.root}>
+        <PlannerTableHead />
+        {structure && <PlannerTableDetails group={structure} />}
+      </div>
+    )
   );
 };
 

@@ -1,7 +1,7 @@
-import { FC, useCallback, useState } from "react";
-import { useAppSelector } from "../../../../../hooks/redux";
+import { FC, useCallback, useEffect, useState } from "react";
 import { formatTaskGrouptoTask } from "../../libs/formatData";
 import { IPlannerTaskGroup } from "../../libs/interfaces";
+import { usePlannerContext } from "../../libs/plannerContext";
 import PlannerTableTask from "../task/PlannerTableTask";
 import scss from "./plannerTableDetails.module.scss";
 
@@ -9,13 +9,18 @@ const PlannerTableDetails: FC<{
   group: IPlannerTaskGroup;
   level?: number;
 }> = ({ group, level = 0 }) => {
-  const { tasks } = useAppSelector((state) => state.planner);
+  // const { tasks } = useAppSelector((state) => state.planner);
+  const { tasks } = usePlannerContext();
   const [open, setOpen] = useState(group.open);
 
   const handleOpenToggle = useCallback(() => {
     // TODO: update open group
     setOpen((state) => !state);
   }, []);
+
+  useEffect(() => {
+    console.log("render details");
+  });
 
   return (
     <>
